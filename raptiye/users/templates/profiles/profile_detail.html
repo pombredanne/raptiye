@@ -74,12 +74,6 @@
                         {% endif %}
 
                         <p class="no_bottom_margin">
-                            <strong>Yorum Sayısı:</strong>
-                            {{ profile.comments_count }}
-                            {# TODO: fill comment counts #}
-                        </p>
-
-                        <p class="no_bottom_margin">
                             <strong>Üyelik Tarihi:</strong>
                             {{ profile.user.date_joined|date:'d.m.Y, H:i' }}
                         </p>
