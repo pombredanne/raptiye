@@ -20,7 +20,7 @@
 
 {% load blog_filters %}
 
-{% block title %}kullanıcı girişi @ {% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}yeni kullanıcı kaydı @ {% project_name %} | {% project_subtitle %}{% endblock %}
 
 {% block content %}
     <div class="grid_6 alpha">
@@ -30,7 +30,7 @@
     <div class="grid_10 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
-                <h2>Kullanıcı Girişi</h2>
+                <h2>Yeni Kullanıcı Kaydı</h2>
                 <form method="post" accept-charset="utf-8">
                     {% csrf_token %}
 
@@ -63,7 +63,7 @@
                     {% endif %}
 
                     <div id="users_form_buttons" class="text_center">
-                        <button type="submit">giriş</button>
+                        <button type="submit">kaydol</button>
                         <button type="reset">temizle</button>
                     </div>
                 </form>

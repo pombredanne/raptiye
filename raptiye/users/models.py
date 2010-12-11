@@ -21,23 +21,27 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
+from raptiye.blog.models import Entry
+
 class UserProfile(models.Model):
-	"""
-	Stores additional information about the users..
+    """
+    Stores additional information about the users..
 
-	"""
-	
-	user = models.ForeignKey(User, related_name='profile', verbose_name=u"User")
-	avatar = models.URLField(u"Avatar", default=settings.DEFAULT_AVATAR)
-	web_site = models.URLField(u"Web Site", blank=True)
-	activation_key = models.CharField(u"Activation Code", max_length=100, blank=True)
-	last_modified = models.DateTimeField(u"Last Modified Date", auto_now=True)
-	openid = models.URLField(u"OpenID", blank=True, null=True, unique=True)
-	
-	def __unicode__(self):
-		return "User Profile of %s" % self.user.username
+    """
 
-	class Meta:
-		verbose_name = u"User Profile"
-		verbose_name_plural = u"User Profiles"
+    user = models.OneToOneField(User, related_name='profile', verbose_name=u"User")
+    avatar = models.URLField(u"Avatar", default=settings.DEFAULT_AVATAR)
+    web_site = models.URLField(u"Web Site", blank=True)
+    comments_count = models.PositiveIntegerField(u"Comments Count", default=0, editable=False)
+    subscribed_entries = models.ManyToManyField(Entry, related_name="subscribed_users", verbose_name=u"Subscribed Entries", 
+        null=True, db_table="subscribed_entries_per_profile")
+    last_modified = models.DateTimeField(u"Last Modified Date", auto_now=True)
 
+    def __unicode__(self):
+        return "User Profile of %s" % self.user
+
+    class Meta:
+        get_latest_by = "last_modified"
+        ordering = ["-last_modified"]
+        verbose_name = u"User Profile"
+        verbose_name_plural = u"User Profiles"

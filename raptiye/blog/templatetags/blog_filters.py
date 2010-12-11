@@ -19,14 +19,13 @@
 
 from datetime import date
 import HTMLParser
-import re
 
 from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
-from django.utils.safestring import mark_safe
 
-from raptiye.blog.models import Entry, Link
+from raptiye.blog.functions import is_app_installed, get_latest_entries
+from raptiye.blog.models import Link
 from raptiye.blog.webcal import WebCalendar
 
 register = template.Library()
@@ -36,10 +35,9 @@ def calculate_age():
     return (date.today() - settings.BIRTH_DATE).days/365
 
 @register.simple_tag
-def construct_calendar():
-    today = date.today()
-    wc = WebCalendar(today.year, today.month, today.day, Entry.objects, "datetime", settings.LOCALES['tr'])
-    return wc.render("calendar_table", "/blog", "ulink")
+def construct_calendar(year=date.today().year, month=date.today().month, day=date.today().day):
+    wc = WebCalendar(get_latest_entries(), locale=settings.LOCALES["tr"])
+    return wc.formatmonth(year, month, day)
 
 @register.inclusion_tag('pagination.html', takes_context=True)
 def paginator(context, adjacent_pages=2):
@@ -161,6 +159,10 @@ def code_colorizer(entry):
             return parser.renderContents()
 
     return entry
+
+@register.filter
+def is_installed(app):
+    return is_app_installed(app)
 
 @register.simple_tag
 def project_name():

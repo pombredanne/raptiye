@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# 
 # coding: utf-8
 # 
 # raptiye
@@ -21,97 +19,47 @@
 
 import calendar
 
-class WebCalendar():
-    """
-    creates a web calendar that can be bound to
-    some objects if the object has a datetime field.
+from django.core.urlresolvers import reverse
 
-    """
+class WebCalendar(calendar.LocaleHTMLCalendar):
+    def __init__(self, obj_list, queryField="datetime", cssClass="ulink", firstweekday=0, locale=None):
+        super(WebCalendar, self).__init__(firstweekday, locale)
+        self.obj_list = obj_list
+        self.queryField = queryField
+        self.cssClass = cssClass
 
-    def __init__(self, year, month, day, object=None, datetime_field='', locale=''):
+    def haveObjForDate(self):
+        filters = {
+            "%s__year" % self.queryField: self.year,
+            "%s__month" % self.queryField: self.month,
+            "%s__day" % self.queryField: self.day
+        }
+
+        return self.obj_list.filter(**filters).exists()
+
+    def formatmonth(self, year, month, selectedDay=None):
         self.year = year
         self.month = month
+        self.selectedDay = selectedDay
+
+        tableData = super(WebCalendar, self).formatmonth(year, month)
+
+        return tableData
+
+    def formatday(self, day, weekday):
         self.day = day
-        self.object = object
-        self.datetime_field = datetime_field
-        if not locale:
-            self.calendar = calendar.LocaleTextCalendar()
-        else:
-            self.calendar = calendar.LocaleTextCalendar(0, locale)
 
-    def get_year(self):
-        return self.year
+        if day != 0:
+            cellCSS = "%s %s" % (
+                self.cssclasses[weekday], "today"
+            ) if self.day == self.selectedDay else self.cssclasses[weekday]
 
-    def get_month(self):
-        return self.month
+            cellValue = '<a href="%s" class="%s">%d</a>' % (
+                reverse("blog:entries_on_date", args=[self.year, self.month, self.day]),
+                self.cssClass,
+                day
+            ) if self.haveObjForDate() else "%d" % day
 
-    def get_day(self):
-        return self.day
+            return '<td class="%s">%s</td>' % (cellCSS, cellValue)
 
-    def get_object(self):
-        return self.object
-
-    def get_datetime_field(self):
-        return self.datetime_field
-
-    def set_object(self, object):
-        self.object = object
-
-    def set_datetime_field(self, datetime_field):
-        self.datetime_field = datetime_field
-
-    def render(self, table_id="", link_path="", link_class=""):
-        html = u"<table id='%s'>" % table_id
-        # creating the header part
-        html += u"<tr>"
-        # printing days' name 3 chars long
-        for i in range(7):
-            html += u"<th>%s</th>" % self.calendar.formatweekday(i, 3).lower()
-        html += u"</tr>"
-        # creating the rest of the table
-        for week in self.calendar.monthdayscalendar(self.get_year(), self.get_month()):
-            html += u"<tr>"
-            for day in week:
-                if day == 0:
-                    html += u"<td></td>"
-                else:
-                    if self.get_object() is not None and self.get_datetime_field() is not None:
-                        filters = {
-                            self.get_datetime_field() + "__year": self.get_year(),
-                            self.get_datetime_field() + "__month": self.get_month(),
-                            self.get_datetime_field() + "__day": day,
-                        }
-
-                        # FIXME: do the url stuff with reverse!
-                        if self.get_object().filter(**filters).exists():
-                            if day == self.get_day():
-                                html += u"<td class='today'><a href='%s/%4d/%02d/%02d/' class='%s'>%d</a></td>" % (
-                                    link_path,
-                                    self.get_year(), 
-                                    self.get_month(),
-                                    day,
-                                    link_class,
-                                    day
-                                )
-                            else:
-                                html += u"<td><a href='%s/%4d/%02d/%02d/' class='%s'>%d</a></td>" % (
-                                    link_path,
-                                    self.get_year(),
-                                    self.get_month(),
-                                    day,
-                                    link_class,
-                                    day
-                                )
-                        else:
-                            if day == self.get_day():
-                                html += u"<td class='today'>%d</td>" % day
-                            else:
-                                html += u"<td>%d</td>" % day
-                    else:
-                        if day == self.get_day():
-                            html += u"<td class='today'>%d</td>" % day
-                        else:
-                            html += u"<td>%d</td>" % day
-            html += u"</tr>"
-        html += u"</table>"
-        return html
+        return '<td class="noday">&nbsp;</td>'

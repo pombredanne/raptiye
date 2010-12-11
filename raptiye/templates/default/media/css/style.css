@@ -35,6 +35,10 @@ blockquote {
     background-color: #ececec;
 }
 
+h2.smaller {
+    font-size: 21px;
+}
+
 #header_top {
     position: absolute;
     top: 0;
@@ -138,7 +142,7 @@ blockquote {
     margin-left: 10px;
 }
 
-#calendar_table {
+.web_calendar table {
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 10px 0;
@@ -146,7 +150,13 @@ blockquote {
     text-align: right;
 }
 
-#calendar_table .today {
+.web_calendar table th.month {
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.web_calendar .today {
     font-weight: bold;
 }
 
@@ -181,7 +191,7 @@ blockquote {
     margin-bottom: 10px;
 }
 
-.blog_entry_content li:before, li.arrowed:before {
+.blog_entry_content li:before {
     content: "» ";
 }
 
@@ -232,12 +242,76 @@ blockquote {
     margin-bottom: -4px;
 }
 
-.twitter_item {
-    margin-bottom: 7px;
+#users_form {
+    border-collapse: separate;
+    border-spacing: 20px 0;
+}
+
+#users_form .field_error {
+    margin-top: 3px;
+    padding: 3px 8px 3px 8px;
+    max-width: 250px;
+    background-color: #990000;
+    border: 1px solid #333;
+    color: white;
+}
+
+#users_form_error {
+    margin: 20px auto;
+    padding: 3px 8px 3px 8px;
+    width: 400px;
+    background-color: #990000;
+    border: 1px solid #333;
+    color: white;
+}
+
+#users_form_buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#profile_avatar {
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
+
+#profile_info, #profile_stats, #subscribed_entries_of_user {
+    margin-top: 20px;
+}
+
+#profile_action_container {
+    margin-bottom: 40px;
+}
+
+.profile_action_link {
+    margin-right: 20px;
+}
+
+.statics_table {
+    width: 100%;
+    text-align: left;
+}
+
+.statics_table th {
+    padding-bottom: 5px;
+}
+
+.statics_table tr.table_dark_row {
+    background-color: #eee;
+}
+
+.statics_table td {
+    padding: 3px 5px 3px 5px;
+    border: 1px solid #ccc;
 }
 
 .align_left {
     float: left;
+}
+
+.align_center {
+    margin: 0 auto;
 }
 
 .align_right {
@@ -260,11 +334,7 @@ blockquote {
 	font-weight: bold;
 }
 
-.italic, .twitter_item a {
-    font-style: italic;
-}
-
-.underline, .ulink, .twitter_item a {
+.underline {
     text-decoration: underline;
 }
 
@@ -288,7 +358,19 @@ blockquote {
     display: inline;
 }
 
-.ulink:hover, .twitter_item a:hover {
+.ulink {
+    text-decoration: underline;
+}
+
+.ulink:hover {
+    text-decoration: none;
+}
+
+.nolink {
+    text-decoration: none;
+}
+
+.nolink:hover {
     text-decoration: none;
 }
 

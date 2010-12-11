@@ -34,7 +34,7 @@ DJANGO_DIR = os.path.abspath(os.path.dirname(django.__file__))
 # --- GENERIC SETTINGS ------------
 
 PROJECT_NAME = u"raptiye"
-VERSION = '2.1.3'
+VERSION = '2.2'
 PROJECT_SUBTITLE = u"Bilgi Paylaştıkça Çoğalır!"
 
 COLORIZE_CODE = False
@@ -51,7 +51,6 @@ BIRTH_DATE = date(1984, 05, 16)
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 20
-AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 
 
@@ -82,6 +81,7 @@ EMAIL_INFO_ADDRESS_EN = ""
 # EMAIL_PORT = 
 EMAIL_SUBJECT_PREFIX = u""
 EMAIL_USE_TLS = True
+SERVER_EMAIL = ""
 
 LANGUAGES = (
     ("tr", "tr"),
@@ -95,12 +95,14 @@ LOCALES = {
 
 CSRF_COOKIE_DOMAIN = ".raptiye.org"
 
-DEFAULT_CHARSET='utf8'
+DEFAULT_CHARSET='utf-8'
 DEFAULT_CONTENT_TYPE = 'text/html'
 FILE_CHARSET = 'utf-8'
 
 LOGIN_URL = "/users/login/"
 LOGOUT_URL = "/users/logout/"
+LOGIN_REDIRECT_URL = "/"
+DEFAULT_AVATAR = lambda: MEDIA_URL + "images/default_avatar.png"
 
 # URL Pattern Naming used here..
 REDIRECT_URL = "blog"
@@ -136,21 +138,20 @@ SITE_ID = 1
 USE_I18N = True
 
 MEDIA_ROOT = '%s/media/' % DOCUMENT_ROOT
-
 MEDIA_URL = '/media/'
-
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
-    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
@@ -162,15 +163,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    "django.core.context_processors.csrf",
 )
 
 TEMPLATE_DIRS = (
-    "%s/templates/default/" % DOCUMENT_ROOT,
+    "%s/templates/default" % DOCUMENT_ROOT,
 )
 
 TEMPLATE_LOADERS = (
-    # 'django.template.loaders.filesystem.load_template_source',
-    # 'django.template.loaders.app_directories.load_template_source',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
@@ -179,12 +179,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.redirects',
     'django.contrib.sessions',
     'django.contrib.sites',
     'tagging',
+    # 'registration',
+    # 'profiles',
     'raptiye.blog',
     'raptiye.contrib.flatpages',
+    # 'raptiye.users',
 )
 
 try:

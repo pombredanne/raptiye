@@ -17,27 +17,67 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 # 
 
-from django.conf import settings
 from django.conf.urls.defaults import *
+from django.core.urlresolvers import reverse
+from django.utils.functional import lazy
+from django.views.generic.simple import direct_to_template
+
+from raptiye.blog.functions import is_app_installed
+
+# TODO: migrate the code to class based generic views, functionals are deprecated!
 
 urlpatterns = patterns('raptiye.users.views',
-	# openid complete page
-	url(r'^openid/complete/$', 'openid_complete', name="openid_complete"),
-	# register page
-	url(r'^register/$', 'register', name='registration'),
-	# login page
-	url(r'^login/$', 'user_login', name='login_page'),
-	# logout page
-	url(r'^logout/$', 'user_logout', name='logout_page'),
-	# forgotten password page
-	url(r'^forgotten_password/$', 'forgotten_password', name='forgotten_password'),
-	# activation page
-	url(r'^(?P<username>[\w\d]+)/activate/(?P<key>[\w\d]+)/$', 'activation', name='activation_page'),
-	# gravatar request
-	url(r'^(?P<username>[\w\d]+)/profile/gravatar/$', 'gravatar', name='gravatar_request'),
-	# profile page
-	url(r'^(?P<username>[\w\d]+)/profile/$', 'profile', name='profile_page'),
-	# profile page notification removal
-	url(r'^(?P<username>[\w\d]+)/profile/notification/remove/$', 'notification_remove', name='notification_removal'),
+    url(r'^reset/password/being/confirmed/$', direct_to_template,
+        {'template': 'password_reset_being_confirmed.html'}, name='password_reset_being_confirmed'),
+    url(r'^reset/password/complete/$', direct_to_template,
+        {'template': 'password_reset_complete.html'}, name='password_reset_complete'),
 )
 
+# builtin views with custom parameters
+urlpatterns += patterns('django.contrib.auth.views',
+    url(r'^login/$', 'login', {
+        'template_name': 'login.html'
+    }, name='login'),
+    url(r'^logout/$', 'logout', {
+        'template_name': 'logout.html'
+    }, name='logout'),
+    url(r'^reset/password/$', 'password_reset', {
+        'template_name': 'password_reset_form.html',
+        'email_template_name': 'password_reset_email.html',
+        'post_reset_redirect': lazy(reverse, str)('users:password_reset_being_confirmed')
+    }, name='password_reset'),
+    url(r'^reset/password/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'password_reset_confirm', {
+        'template_name': 'password_reset_confirm.html',
+        'post_reset_redirect': lazy(reverse, str)('users:password_reset_complete')
+    }, name='password_reset_confirm')
+)
+
+if is_app_installed("registration"):
+    urlpatterns += patterns('registration.views',
+        url(r'^activate/complete/$', direct_to_template, {
+            'template': 'registration/activation_complete.html'
+        }, name='registration_activation_complete'),
+        # Activation keys get matched by \w+ instead of the more specific
+        # [a-fA-F0-9]{40} because a bad activation key should still get to the view;
+        # that way it can return a sensible "invalid key" message instead of a
+        # confusing 404.
+        url(r'^activate/(?P<activation_key>\w+)/$', 'activate', {
+            'backend': 'registration.backends.default.DefaultBackend',
+            'success_url': lazy(reverse, str)('users:registration_activation_complete')
+        }, name='activate'),
+        url(r'^register/$', 'register', {
+            'backend': 'registration.backends.default.DefaultBackend',
+            'success_url': lazy(reverse, str)('users:registration_complete')
+        }, name='registration'),
+        url(r'^register/complete/$', direct_to_template, {
+            'template': 'registration/registration_complete.html'
+        }, name='registration_complete')
+    )
+
+if is_app_installed("profiles"):
+    urlpatterns += patterns('',
+        # url(r'^create/$', 'create_profile', name='profiles_create_profile'),
+        url(r'^edit/$', 'raptiye.users.views.edit_profile', name='profiles_edit_profile'),
+        url(r'^(?P<username>\w+)/$', 'profiles.views.profile_detail', name='profiles_profile_detail'),
+        # url(r'^$', views.profile_list, name='profiles_profile_list')
+    )
