@@ -94,26 +94,6 @@ def emotions(entry):
 
     return entry
 
-@register.inclusion_tag("twitter.html")
-def twitter():
-    """
-    Gets the latest Twitter status updates of the blog author
-    using the credentials in settings.py
-
-    """
-
-    if settings.ENABLE_TWITTER_BOX and settings.TWITTER_USERNAME != "" and settings.TWITTER_PASSWORD != "":
-        import twitter
-
-        try:
-            api = twitter.Api(username=settings.TWITTER_USERNAME, password=settings.TWITTER_PASSWORD)
-            latest_updates_of_user = [status.GetText() for status in api.GetUserTimeline()]
-            return {"latest_updates": latest_updates_of_user[:settings.TWITTER_LIMIT]}
-        except:
-            pass
-
-    return {"latest_updates": None}
-
 @register.filter
 def exceeds_limit(entry):
     if len(entry.split()) > 150:
