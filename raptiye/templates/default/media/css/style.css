@@ -35,6 +35,10 @@ blockquote {
     background-color: #ececec;
 }
 
+h2.smaller {
+    font-size: 21px;
+}
+
 #header_top {
     position: absolute;
     top: 0;
@@ -138,7 +142,7 @@ blockquote {
     margin-left: 10px;
 }
 
-#calendar_table {
+.web_calendar table {
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 10px 0;
@@ -146,7 +150,13 @@ blockquote {
     text-align: right;
 }
 
-#calendar_table .today {
+.web_calendar table th.month {
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.web_calendar .today {
     font-weight: bold;
 }
 
