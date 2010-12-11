@@ -62,12 +62,12 @@ MAX_TAG_LENGTH = 50
 
 
 
-# --- TWITTER SETTINGS ------------
+# --- USER ACCOUNT SETTINGS -------
 
-ENABLE_TWITTER_BOX = False
-TWITTER_USERNAME = ""
-TWITTER_PASSWORD = ""
-TWITTER_LIMIT = 10
+# AUTH_PROFILE_MODULE = 'users.UserProfile'
+
+# used by django-registration
+# ACCOUNT_ACTIVATION_DAYS = 7
 
 
 

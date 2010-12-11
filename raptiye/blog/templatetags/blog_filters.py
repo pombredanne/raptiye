@@ -96,44 +96,6 @@ def emotions(entry):
 
     return entry
 
-@register.inclusion_tag("twitter.html")
-def twitter():
-    """
-    Gets the latest Twitter status updates of the blog author
-    using the credentials in settings.py
-
-    """
-
-    if settings.ENABLE_TWITTER_BOX:
-        try:
-            import twitter
-            api = twitter.Api(username=settings.TWITTER_USERNAME, password=settings.TWITTER_PASSWORD)
-            latest_updates_of_user = [status.GetText() for status in api.GetUserTimeline()]
-            return {"latest_updates": latest_updates_of_user[:settings.TWITTER_LIMIT]}
-        except:
-            pass
-
-    return {"latest_updates": None}
-
-@register.filter
-def twitter_specials(tweet):
-    isReply = lambda s: s.startswith("@")
-    isHashTag = lambda s: s.startswith("#")
-    specials = re.findall("@[^\s]+|#[^\s]+", tweet)
-    unique_specials = set(specials)
-
-    for tag in unique_specials:
-        linked_tag = tag
-
-        if isReply(tag):
-            linked_tag = '<a href="http://twitter.com/%s/" target="_blank">%s</a>' % (tag.replace("@", ""), tag)
-        elif isHashTag(tag):
-            linked_tag = '<a href="http://twitter.com/search?q=%s" target="_blank">%s</a>' % (tag, tag)
-
-        tweet = tweet.replace(tag, linked_tag)
-
-    return mark_safe(tweet)
-
 @register.filter
 def exceeds_limit(entry):
     if len(entry.split()) > 150:
