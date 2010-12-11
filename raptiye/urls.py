@@ -19,15 +19,21 @@ from django.conf import settings
 from django.conf.urls.defaults import *
 from django.contrib import admin
 
+from raptiye.blog.functions import is_app_installed
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'raptiye.blog.views.index', name="index"),
 
     (r'^admin/', include(admin.site.urls)),
-    (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog')),
-    (r'^users/', include('raptiye.users.urls', namespace='users', app_name='users')),
+    (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog'))
 )
+
+if is_app_installed('raptiye.users'):
+    urlpatterns += patterns('',
+        (r'^users/', include('raptiye.users.urls', namespace='users', app_name='users')),
+    )
 
 if settings.DEBUG:
     urlpatterns += patterns('',
