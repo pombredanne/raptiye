@@ -53,7 +53,7 @@
 
                             {% if user == profile.user %}
                                 <div class="smallplus align_left profile_action_link">
-                                    <a href="#" title="profilinizi düzenlemek için tıklayın" class="nolink">
+                                    <a href="{% url users:profiles_edit_profile %}" title="profilinizi düzenlemek için tıklayın" class="nolink">
                                         <img src="{{ MEDIA_URL|default:'/media/' }}template/images/edit.png">
                                         düzenle
                                     </a>
