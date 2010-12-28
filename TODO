@@ -1,19 +1,17 @@
 Important changes to remember:
 
- - master
+ - master [2.2]
  |
  `--> calendar needs improvement
  `--> monthly/yearly pages needed with calendar support
  `--> server configuration scripts needs to be included to the code base
- |
- - 2.2 (users branch)
- |
  `--> edit migration script to drop unnecessary tables regarding users branch
  `--> removal of subscribed entries needed (using starts and ajax calls)
  `--> all ajax calls should be backed up with normal request & responses
  `--> profile edit page needed
  `--> profile avatar code needed (gravatar support etc.) for various resolutions
  `--> add "show all" for subscribed entries (js would be fine?)
+ `--> map old wordpress addresses to related posts
  |
  - 2.3 (comments branch)
  |
