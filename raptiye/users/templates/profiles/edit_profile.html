@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% comment %}
+    raptiye
+    Copyright (C) 2009  Alper KANAT <alperkanat@raptiye.org>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load blog_filters %}
+
+{% block title %}{{ profile.user }} @ {% project_name %} | {% project_subtitle %}{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            // TODO: focus on smth
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="grid_6 alpha">
+        {% include "sidebar.html" %}
+    </div>
+
+    <div class="grid_10 omega">
+        <div class="blog_entry_container vertical_first vertical_last">
+            <div class="blog_entry">
+                <div id="profile_body">
+                    <img src="{{ profile.avatar }}" id="profile_avatar" class="align_right" 
+                        alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}">
+
+                    <h2>Profil Bilgileriniz</h2>
+
+                    {{form}}
+
+                    <div class="both_sides_cleared"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

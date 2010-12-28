@@ -17,12 +17,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 # 
 
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 
 from profiles.views import edit_profile as profiles_edit_profile
 
-@login_required
+from raptiye.users.forms import ProfileForm
+
 def edit_profile(request):
     """
     Wrapper function to django-profiles' edit_profile method for
@@ -30,7 +30,7 @@ def edit_profile(request):
     
     """
     
-    return profiles_edit_profile(request,
-        success_url=reverse("profiles.views.profile_detail", kwargs={
+    return profiles_edit_profile(request, form_class=ProfileForm,
+        success_url=reverse("users:profiles_profile_detail", kwargs={
             "username": request.user.username
         }))
