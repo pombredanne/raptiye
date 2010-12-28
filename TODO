@@ -21,22 +21,26 @@ Important changes to remember:
  |
  - 2.3 (comments branch)
  |
- `--> create branch :)
+ `--> will be planned
  |
  - 2.4 (social branch)
  |
- `--> create branch :)
  `--> twitter support needed
  |    `--> twitter box
  |    `--> announce in twitter after first publishment and optional update publishment
  `--> facebook support needed
  `--> openid/oauth support needed for single signon
  |
- - 2.5 (admin branch)
- |
- `--> grappelli?
- `--> move settings for raptiye to admin panel
- |
- - 2.6 (template branch)
+ - 2.5 (template branch)
  |
  `--> templates should be easily changable maybe through admin panel using some app?
+ |
+ - 2.6 (admin branch)
+ |
+ `--> move settings for raptiye to admin panel
+ `--> grappelli?
+ |
+ - 2.7 (polishing)
+ |
+ `--> create easy_install scripts
+ `--> create arch linux package
