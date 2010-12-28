@@ -22,6 +22,14 @@
 
 {% block title %}yeni kullanıcı kaydı @ {% project_name %} | {% project_subtitle %}{% endblock %}
 
+{% block js %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $("#id_username").focus()
+        })
+    </script>
+{% endblock %}
+
 {% block content %}
     <div class="grid_6 alpha">
         {% include "sidebar.html" %}
