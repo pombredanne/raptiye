@@ -8,7 +8,6 @@ REQUIREMENTS
 * django (>= 1.1)
 * django-tagging
 * python-imaging
-* django-tagging
 * django-registration (optional)
 * django-profiles (optional)
 * python-openid (optional)
