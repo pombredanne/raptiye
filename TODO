@@ -2,16 +2,22 @@ Important changes to remember:
 
  - master [2.2]
  |
- `--> calendar needs improvement
- `--> monthly/yearly pages needed with calendar support
- `--> server configuration scripts needs to be included to the code base
- `--> edit migration script to drop unnecessary tables regarding users branch
- `--> removal of subscribed entries needed (using starts and ajax calls)
- `--> all ajax calls should be backed up with normal request & responses
  `--> profile edit page needed
  `--> profile avatar code needed (gravatar support etc.) for various resolutions
+ `--> delete language field for blogs (therefore no need for flatpages fork)
+ |    `--> languages (i18n) will be based on tags
+ `--> django-rosetta integration
+ |
+ - 2.2.1 (polishing)
+ |
  `--> add "show all" for subscribed entries (js would be fine?)
+ `--> monthly/yearly pages needed with calendar support
+ `--> calendar needs improvement
+ `--> removal of subscribed entries needed (using starts and ajax calls)
+ `--> all ajax calls should be backed up with normal request & responses
  `--> map old wordpress addresses to related posts
+ `--> server configuration scripts needs to be included to the code base
+ `--> start a changelog
  |
  - 2.3 (comments branch)
  |
