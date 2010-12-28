@@ -24,6 +24,8 @@ from tagging.forms import TagField
 from raptiye.blog.models import Entry
 from raptiye.blog.widgets import *
 
+__all__ = ("EntryForm",)
+
 class EntryForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(model=Entry), required=False)
     content = forms.CharField(widget=CKEditorInput)
