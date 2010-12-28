@@ -39,6 +39,10 @@ h2.smaller {
     font-size: 21px;
 }
 
+input[type=text], input[type=password] {
+    width: 180px;
+}
+
 #header_top {
     position: absolute;
     top: 0;
