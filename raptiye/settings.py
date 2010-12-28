@@ -109,6 +109,23 @@ REDIRECT_URL = "blog"
 
 INTERNAL_IPS = ()
 
+DATE_FORMAT = "d.m.Y"
+DATE_INPUT_FORMATS = (
+    '%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%b %d %Y',
+    '%b %d, %Y', '%d %b %Y', '%d %b, %Y', '%B %d %Y',
+    '%B %d, %Y', '%d %B %Y', '%d %B, %Y', '%d/%m/%Y',
+    '%d.%m.%Y'
+)
+
+DATETIME_FORMAT = "H:i @ d.m.Y, l"
+DATETIME_INPUT_FORMATS = (
+    '%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M', '%Y-%m-%d',
+    '%m/%d/%Y %H:%M:%S', '%m/%d/%Y %H:%M', '%m/%d/%Y',
+    '%m/%d/%y %H:%M:%S', '%m/%d/%y %H:%M', '%m/%d/%y',
+    '%d.%m.%Y', '%d/%m/%Y', '%d/%m/%Y %H:%M',
+    '%d.%m.%Y %H:%M', '%d.%m.%Y %H:%M:%S', '%d/%m/%Y %H:%M:%S',
+)
+
 
 
 # --- STANDARD DJANGO SETTINGS ----
