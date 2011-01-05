@@ -25,7 +25,7 @@
 {% block js %}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            // TODO: focus on smth
+            $("#id_first_name").focus()
         })
     </script>
 {% endblock %}
@@ -38,16 +38,60 @@
     <div class="grid_10 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
-                <div id="profile_body">
-                    <img src="{{ profile.avatar }}" id="profile_avatar" class="align_right" 
-                        alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}">
+                <div class="align_right">
+                    <div>
+                        <img src="{{ profile.avatar }}" id="profile_avatar"
+                            alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}">
+                    </div>
 
-                    <h2>Profil Bilgileriniz</h2>
-
-                    {{form}}
-
-                    <div class="both_sides_cleared"></div>
+                    <div class="smallplus text_center">
+                        [
+                        <a href="#" title="profil resminizi değiştirmek için tıklayın."
+                            class="ulink">değiştir</a>
+                        ]
+                    </div>
                 </div>
+
+                <h2>Profil Bilgileriniz</h2>
+
+                <form action="{% url users:profiles_edit_profile %}" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
+
+                    <table class="left_table">
+                        {% for field in form %}
+                            <tr>
+                                <th class="text_right">{{ field.label_tag }}:</th>
+                                {% if field.errors %}
+                                    <td class="field_error">
+                                        {{ field }}
+                                        <span class="smallplusplus">
+                                            {% for error in field.errors %}
+                                                <li>&raquo; {{ error }}</li>
+                                            {% endfor %}
+                                        </span>
+                                    </td>
+                                {% else %}
+                                    <td>{{ field }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+
+                        <tr>
+                            <td colspan="2" class="table_form_buttons text_center">
+                                <button type="submit">kaydet</button>
+                                <button type="reset">sıfırla</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+                <div class="smallplus">
+                    &raquo;
+                    <a href="#" title="Şifrenizi değiştirmek için buraya tıklayın."
+                        class="ulink">Şifremi değiştirmek istiyorum.</a>
+                </div>
+
+                <div class="both_sides_cleared"></div>
             </div>
         </div>
     </div>

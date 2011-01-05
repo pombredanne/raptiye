@@ -20,7 +20,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from profiles.utils import get_profile_model
+from raptiye.users.models import UserProfile
 
 __all__ = ("ProfileForm",)
 
@@ -31,15 +31,23 @@ class ProfileForm(forms.Form):
     web_site = forms.URLField(label=_("web site"), required=False, verify_exists=True)
     
     def __init__(self, *args, **kwargs):
-        self.instance = kwargs.pop("instance", get_profile_model())
+        if kwargs.has_key("instance"):
+            form_data = {}
+            self.instance = kwargs.pop("instance")
+            # filling form data from existing profile information
+            form_data["first_name"] = self.instance.user.first_name
+            form_data["last_name"] = self.instance.user.last_name
+            form_data["email"] = self.instance.user.email
+            form_data["web_site"] = self.instance.web_site
+            # passing form data to the form instance
+            kwargs["initial"] = form_data
         super(ProfileForm, self).__init__(*args, **kwargs)
     
     def save(self):
-        user = self.instance.user
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
-        user.email = self.cleaned_data["email"]
-        user.save()
+        self.instance.user.first_name = self.cleaned_data["first_name"]
+        self.instance.user.last_name = self.cleaned_data["last_name"]
+        self.instance.user.email = self.cleaned_data["email"]
+        self.instance.user.save()
         self.instance.web_site = self.cleaned_data["web_site"]
         self.instance.save()
         return self.instance

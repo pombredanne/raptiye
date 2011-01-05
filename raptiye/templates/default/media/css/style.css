@@ -41,6 +41,11 @@ h2.smaller {
 
 input[type=text], input[type=password] {
     width: 180px;
+    padding: 2px;
+}
+
+form {
+    margin-bottom: 20px;
 }
 
 #header_top {
@@ -310,6 +315,20 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
 }
 
+.left_table {
+    border-collapse: separate;
+    border-spacing: 15px 0;
+}
+
+.field_error input {
+    background-color: #990000;
+    color: white;
+}
+
+.table_form_buttons {
+    padding-top: 15px;
+}
+
 .align_left {
     float: left;
 }
@@ -352,6 +371,10 @@ input[type=text], input[type=password] {
 
 .smallplus {
     font-size: 12px;
+}
+
+.smallplusplus {
+    font-size: 11px;
 }
 
 .grey {
