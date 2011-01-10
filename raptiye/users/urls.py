@@ -26,7 +26,7 @@ from raptiye.blog.functions import is_app_installed
 
 # TODO: migrate the code to class based generic views, functionals are deprecated!
 
-urlpatterns = patterns('raptiye.users.views',
+urlpatterns = patterns('',
     url(r'^reset/password/being/confirmed/$', direct_to_template,
         {'template': 'password_reset_being_confirmed.html'}, name='password_reset_being_confirmed'),
     url(r'^reset/password/complete/$', direct_to_template,
@@ -83,8 +83,6 @@ if is_app_installed("registration"):
 
 if is_app_installed("profiles"):
     urlpatterns += patterns('',
-        # url(r'^create/$', 'create_profile', name='profiles_create_profile'),
         url(r'^edit/$', 'raptiye.users.views.edit_profile', name='profiles_edit_profile'),
         url(r'^(?P<username>\w+)/$', 'profiles.views.profile_detail', name='profiles_profile_detail'),
-        # url(r'^$', views.profile_list, name='profiles_profile_list')
     )
