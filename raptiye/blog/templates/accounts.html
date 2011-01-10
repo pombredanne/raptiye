@@ -27,6 +27,9 @@
     {% if "profiles"|is_installed %}
         &raquo; <a href="{% url users:profiles_profile_detail user.username %}" title="profilinizi görmek ve değiştirmek için tıklayın..">profilim</a>
         <br>
+    {% else %}
+        &raquo; <a href="{% url users:password_change %}" title="raptiye hesabınızın şifresini değiştirmek için tıklayın..">şifremi değiştir</a>
+        <br>
     {% endif %}
 
     &raquo; <a href="{% url users:logout %}?next={{ request.path }}" title="çıkış yapmak için tıklayın..">çıkış</a>

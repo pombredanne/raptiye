@@ -49,7 +49,14 @@ urlpatterns += patterns('django.contrib.auth.views',
     url(r'^reset/password/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'password_reset_confirm', {
         'template_name': 'password_reset_confirm.html',
         'post_reset_redirect': lazy(reverse, str)('users:password_reset_complete')
-    }, name='password_reset_confirm')
+    }, name='password_reset_confirm'),
+    url(r'^change/password/$', 'password_change', {
+        'template_name': 'password_change_form.html',
+        'post_change_redirect': lazy(reverse, str)('users:password_change_done')
+    }, name='password_change'),
+    url(r'^change/password/done/$', 'password_change_done', {
+        'template_name': 'password_change_done.html'
+    }, name='password_change_done')
 )
 
 if is_app_installed("registration"):
