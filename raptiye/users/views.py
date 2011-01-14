@@ -18,6 +18,7 @@
 # 
 
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 
 from profiles.views import edit_profile as profiles_edit_profile
 
@@ -29,6 +30,11 @@ def edit_profile(request):
     overriding success_url argument.
     
     """
+    
+    if not request.user.is_authenticated():
+        # normally we would just return 404 in this case but some
+        # users may logout in edit profile page..
+        return redirect(reverse("index"))
     
     return profiles_edit_profile(request, form_class=ProfileForm,
         success_url=reverse("users:profiles_profile_detail", kwargs={

@@ -17,16 +17,16 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 # 
 
-import hashlib
-import urllib
+from django import template
+from django.conf import settings
 
-def get_gravatar(email, default, size=80):
-    gravatar_url = "http://www.gravatar.com/avatar.php?"
-    
-    gravatar_url += urllib.urlencode({
-        "gravatar_id": hashlib.md5(email).hexdigest(),
-        "default": default,
-        "size": str(size)
-    })
-    
-    return gravatar_url
+from raptiye.users.functions import get_gravatar
+
+register = template.Library()
+
+@register.filter
+def get_avatar_url(email, host=""):
+    return get_gravatar(email, "%s%s" % (
+        host,
+        settings.DEFAULT_AVATAR()
+    ))

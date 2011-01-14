@@ -42,17 +42,19 @@
     <div class="grid_10 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
-                <div class="align_right">
-                    <img src="{{ profile.avatar }}" id="profile_avatar"
-                        alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}">
-
-                    <div class="smallplus text_center">
-                        [
-                        <a href="#" title="profil resminizi değiştirmek için tıklayın."
-                            class="ulink">değiştir</a>
-                        ]
-                    </div>
-                </div>
+                {% if request.is_secure %}
+                    {% with "https://"|add:request.get_host as https_host %}
+                        <img src="{{ profile.user.email|get_avatar_url:https_host }}" id="profile_avatar"
+                            alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}"
+                            class="align_right">
+                    {% endwith %}
+                {% else %}
+                    {% with "http://"|add:request.get_host as http_host %}
+                        <img src="{{ profile.user.email|get_avatar_url:http_host }}" id="profile_avatar"
+                            alt="{{ profile.user }} adlı kullanıcının avatar resmi" title="{{ profile.user }}"
+                            class="align_right">
+                    {% endwith %}
+                {% endif %}
 
                 <h2>Profil Bilgileriniz</h2>
 

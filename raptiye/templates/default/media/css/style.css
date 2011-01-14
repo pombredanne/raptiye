@@ -282,7 +282,6 @@ form {
 #profile_avatar {
     width: 80px;
     height: 80px;
-    border: 1px solid black;
 }
 
 #profile_info, #profile_stats, #subscribed_entries_of_user {

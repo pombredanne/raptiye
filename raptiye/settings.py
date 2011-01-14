@@ -102,7 +102,7 @@ FILE_CHARSET = 'utf-8'
 LOGIN_URL = "/users/login/"
 LOGOUT_URL = "/users/logout/"
 LOGIN_REDIRECT_URL = "/"
-DEFAULT_AVATAR = lambda: MEDIA_URL + "images/default_avatar.png"
+DEFAULT_AVATAR = lambda: MEDIA_URL + "template/images/default_avatar.png"
 
 # URL Pattern Naming used here..
 REDIRECT_URL = "blog"
