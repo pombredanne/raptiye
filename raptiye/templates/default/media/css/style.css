@@ -48,6 +48,10 @@ form {
     margin-bottom: 20px;
 }
 
+button[type=submit] {
+    font-weight: bold;
+}
+
 #header_top {
     position: absolute;
     top: 0;
