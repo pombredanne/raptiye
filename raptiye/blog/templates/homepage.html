@@ -19,8 +19,11 @@
 {% endcomment %}
 
 {% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}{% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    {% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block content %}
     {% regroup entry_list|dictsortreversed:"sticky" by sticky as ordered_event_list %}

@@ -18,12 +18,14 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}{{ flatpage.title }} @ gunluk.{% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    {{ flatpage.title }} @ gunluk.{% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block content %}
-	<div class="grid_6 alpha">
+    <div class="grid_6 alpha">
         {% include "sidebar.html" %}
     </div>
     
@@ -33,16 +35,19 @@
                 <div class="blog_entry_title">
                     <h2>{{ flatpage.title }}</h2>
                 </div>
+
                 <div class="blog_entry_content small">
                     {{ flatpage.content }}
                 </div>
+
                 <div class="blog_entry_footer">
                     <div class="align_right small">
                         {% include "share_on_social_for_flatpages.html" %}
                     </div>
                 </div>
-                <div class="clear"></div>
+
+                <div class="both_sides_cleared"></div>
             </div>
         </div>
-    </div>    
+    </div>
 {% endblock %}

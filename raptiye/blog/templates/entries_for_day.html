@@ -19,8 +19,11 @@
 {% endcomment %}
 
 {% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}{{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    {{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block content %}
     <div class="grid_6 alpha">

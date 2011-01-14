@@ -18,9 +18,11 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}yeni kullanıcı kaydı başarılı @ {% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    yeni kullanıcı kaydı başarılı @ {% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block content %}
     <div class="grid_6 alpha">
@@ -30,7 +32,9 @@
     <div class="grid_10 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
-                <h2 class="align_left">Teşekkürler!</h2>
+                <h2 class="align_left">
+                    Teşekkürler!
+                </h2>
 
                 <img src="{{ MEDIA_URL|default:'/media/' }}template/images/ok.png" class="align_right">
 

@@ -17,6 +17,7 @@
 {% endcomment %}
 
 {% load blog_filters %}
+{% load blog_tags %}
 
 <div class="sidebox_container vertical_first">
     <div class="sidebox_content">
@@ -65,6 +66,7 @@
             <img src="{{ MEDIA_URL|default:'/media/' }}template/images/links.png">
             <strong>bağlantılar</strong>
         </div>
+
         <div class="sidebox_content_body list small">
             {% links %}
         </div>
@@ -77,6 +79,7 @@
             <img src="{{ MEDIA_URL|default:'/media/' }}template/images/contact.png">
             <strong>iletişim</strong>
         </div>
+
         <div class="sidebox_content_body list small">
             {% include "contact.html" %}
         </div>
@@ -90,6 +93,7 @@
                 <img src="{{ MEDIA_URL|default:'/media/' }}template/images/accounts.png">
                 <strong>üyelik</strong>
             </div>
+
             <div class="sidebox_content_body list small">
                 {% include "accounts.html" %}
             </div>

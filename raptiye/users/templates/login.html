@@ -18,9 +18,11 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}kullanıcı girişi @ {% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    kullanıcı girişi @ {% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block js %}
     <script type="text/javascript" charset="utf-8">

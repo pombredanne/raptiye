@@ -18,12 +18,14 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load blog_filters %}
+{% load blog_tags %}
 
-{% block title %}{% project_name %} | {% project_subtitle %}{% endblock %}
+{% block title %}
+    {% project_name %} | {% project_subtitle %}
+{% endblock %}
 
 {% block content %}
-	<div class="grid_6 alpha">
+    <div class="grid_6 alpha">
         {% include "sidebar.html" %}
     </div>
     
@@ -54,5 +56,5 @@
                 <div class="clear"></div>
             </div>
         </div>
-    </div>    
+    </div>
 {% endblock %}
