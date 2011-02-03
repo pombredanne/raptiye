@@ -35,7 +35,7 @@ DJANGO_DIR = os.path.abspath(os.path.dirname(django.__file__))
 
 PROJECT_NAME = u"raptiye"
 VERSION = '2.2'
-PROJECT_SUBTITLE = u"Bilgi Paylaştıkça Çoğalır!"
+PROJECT_SUBTITLE = u"Quis custodes ipsos custodiet?"
 
 COLORIZE_CODE = False
 ENABLE_EMOTIONS = True
