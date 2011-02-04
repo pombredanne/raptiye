@@ -6,6 +6,7 @@ Important changes to remember:
  |
  - 2.2.1 (polishing)
  |
+ `--> investigate db migration applications for django
  `--> add "show all" for subscribed entries (js would be fine?)
  `--> monthly/yearly pages needed with calendar support
  `--> calendar needs improvement
