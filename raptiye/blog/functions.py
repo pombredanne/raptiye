@@ -35,26 +35,26 @@ def is_app_installed(app):
 def get_latest_entries(include_stickies=True):
     if include_stickies:
         return Entry.objects.filter(published=True)
-
+    
     return Entry.objects.filter(published=True).exclude(sticky=True)
 
 def search_against_entries(keywords):
     """
     Searches against the fields title, content and tags
     of each blog entry and returns the OR'ed list..
-
+    
     """
-
+    
     # FIXME: use a fts engine
-
+    
     keyword_list = keywords.split(" ")
     q_list = []
-
+    
     # creating a list of Q objects
     for keyword in keyword_list:
         q_list.append(Q(title__icontains=keyword) | Q(content__icontains=keyword))
-
+        
         # creating an OR'ed Q from the list
         final_q = reduce(operator.or_, q_list)
-
+        
         return get_latest_entries().filter(final_q).distinct()

@@ -7,7 +7,7 @@ class FlatpageFallbackMiddleware(object):
     def process_response(self, request, response):
         if response.status_code != 404:
             return response # No need to check for a flatpage for non-404 responses.
-
+        
         try:
             return flatpage(request, request.path_info)
         except Http404:
@@ -17,6 +17,5 @@ class FlatpageFallbackMiddleware(object):
         except:
             if settings.DEBUG:
                 raise
-
+            
             return response
-

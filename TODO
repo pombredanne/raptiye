@@ -6,19 +6,20 @@ Important changes to remember:
  |
  - 2.2.1 (polishing)
  |
- `--> investigate db migration applications for django
  `--> add "show all" for subscribed entries (js would be fine?)
  `--> monthly/yearly pages needed with calendar support
  `--> calendar needs improvement
  `--> removal of subscribed entries needed (using starts and ajax calls)
- `--> all ajax calls should be backed up with normal request & responses
  `--> map old wordpress addresses to related posts
  `--> server configuration scripts needs to be included to the code base
  `--> start a changelog
+ `--> fix todo's & fixme's in code
  |
  - 2.3 (comments branch)
  |
+ `--> investigate db migration applications for django
  `--> will be planned
+ `--> all ajax calls should be backed up with normal request & responses
  |
  - 2.4 (social branch)
  |

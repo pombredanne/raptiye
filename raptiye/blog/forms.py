@@ -29,6 +29,6 @@ __all__ = ("EntryForm",)
 class EntryForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(model=Entry), required=False)
     content = forms.CharField(widget=CKEditorInput)
-
+    
     class Meta:
         model = Entry

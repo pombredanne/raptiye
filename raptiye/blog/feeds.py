@@ -33,16 +33,16 @@ class RSS(Feed):
     title_template = "blog/feeds/latest_title.html"
     description = settings.PROJECT_SUBTITLE
     description_template = "blog/feeds/latest_description.html"
-
+    
     def link(self):
         return reverse("index")
-
+    
     def item_title(self, item):
         return item.title
-
+    
     def item_description(self, item):
         return item.content
-
+    
     def item_link(self, item):
         return item.get_url()
 
@@ -53,13 +53,13 @@ class RSSLatestEntries(RSS):
 class RSSEntriesTaggedWith(RSS):
     """
     Renders the latest N entries tagged with a given tag.
-
+    
     Sample URL: /feeds/entries_tagged_with/tag/
-
+    
     """
-
+    
     def get_object(self, request, tag):
         return get_object_or_404(Tag, name=tag)
-
+    
     def items(self, item):
         return TaggedItem.objects.get_by_model(get_latest_entries(), item)[:settings.RSS_LIMIT]
