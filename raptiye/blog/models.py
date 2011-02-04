@@ -23,7 +23,6 @@ from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 
-import tagging
 from tagging.fields import TagField
 
 __all__ = ("Entry", "Link")
@@ -42,7 +41,6 @@ class Entry(models.Model):
     datetime = models.DateTimeField(_(u"Publish On"), help_text=_(u"Required"))
     content = models.TextField(_(u"Content"), help_text=_(u"Required.. HTML Allowed.."))
     sticky = models.BooleanField(_(u"Sticky"), default=False)
-    language = models.CharField(_(u"Language"), choices=settings.LANGUAGES, default="tr", max_length=2)
     published = models.BooleanField(_(u"Published"), default=False)
     comments_enabled = models.BooleanField(_(u"Comments Enabled"), default=True)
     slug = models.SlugField(_(u"URL"), max_length=100)

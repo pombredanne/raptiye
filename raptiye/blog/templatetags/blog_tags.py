@@ -34,7 +34,7 @@ def calculate_age():
 
 @register.simple_tag
 def construct_calendar(year=date.today().year, month=date.today().month, day=date.today().day):
-    wc = WebCalendar(get_latest_entries(), locale=settings.LOCALES["tr"])
+    wc = WebCalendar(get_latest_entries(), locale=settings.LOCALE)
     return wc.formatmonth(year, month, day)
 
 @register.inclusion_tag('pagination.html', takes_context=True)

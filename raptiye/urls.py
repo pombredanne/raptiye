@@ -35,6 +35,11 @@ if is_app_installed('raptiye.users'):
         (r'^users/', include('raptiye.users.urls', namespace='users', app_name='users')),
     )
 
+if is_app_installed('rosetta'):
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+    )
+
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),

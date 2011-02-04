@@ -22,7 +22,7 @@ import calendar
 from django.core.urlresolvers import reverse
 
 class WebCalendar(calendar.LocaleHTMLCalendar):
-    def __init__(self, obj_list, queryField="datetime", cssClass="ulink", firstweekday=0, locale=None):
+    def __init__(self, obj_list, queryField="datetime", cssClass="ulink", firstweekday=0, locale="tr_TR.UTF-8"):
         super(WebCalendar, self).__init__(firstweekday, locale)
         self.obj_list = obj_list
         self.queryField = queryField

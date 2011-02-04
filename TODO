@@ -2,10 +2,6 @@ Important changes to remember:
 
  - master [2.2]
  |
- `--> profile edit page needed
- `--> profile avatar code needed (gravatar support etc.) for various resolutions
- `--> delete language field for blogs (therefore no need for flatpages fork)
- |    `--> languages (i18n) will be based on tags
  `--> django-rosetta integration
  |
  - 2.2.1 (polishing)

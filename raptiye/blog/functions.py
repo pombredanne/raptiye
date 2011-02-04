@@ -32,11 +32,11 @@ def is_app_installed(app):
         return True
     return False
 
-def get_latest_entries(language="tr", include_stickies=True):
+def get_latest_entries(include_stickies=True):
     if include_stickies:
-        return Entry.objects.filter(language=language, published=True)
+        return Entry.objects.filter(published=True)
 
-    return Entry.objects.filter(language=language, published=True).exclude(sticky=True)
+    return Entry.objects.filter(published=True).exclude(sticky=True)
 
 def search_against_entries(keywords):
     """

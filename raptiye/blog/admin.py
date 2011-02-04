@@ -29,7 +29,7 @@ class EntryAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             "fields": ("title", "datetime", "content", "tags",
-                ("comments_enabled", "sticky", "published"), "language", "slug"),
+                ("comments_enabled", "sticky", "published"), "slug"),
         }),
     )
     form = EntryForm
@@ -38,7 +38,6 @@ class EntryAdmin(admin.ModelAdmin):
     list_per_page = settings.ADMIN_LIST_PER_PAGE
     ordering = ("-datetime", "title")
     prepopulated_fields = {"slug": ("title",)}
-    radio_fields = {'language': admin.HORIZONTAL}
     save_as = True
     save_on_top = True
     search_fields = ("title", "content")

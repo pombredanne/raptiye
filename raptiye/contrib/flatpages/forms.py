@@ -21,30 +21,36 @@ from django import forms
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
+from tagging.forms import TagField
+
+from raptiye.blog.models import Entry
+from raptiye.blog.widgets import *
 from raptiye.contrib.flatpages.models import FlatPage
-from raptiye.blog.widgets import CKEditorInput
+
+__all__ = ("FlatPageForm",)
 
 class FlatPageForm(forms.ModelForm):
+    tags = TagField(widget=AutoCompleteTagInput(model=Entry), required=False)
     content = forms.CharField(widget=CKEditorInput, required=False)
     url = forms.RegexField(label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
         help_text = _("Example: '/about/contact/'. Make sure to have leading"
             " and trailing slashes."),
         error_message = _("This value must contain only letters, numbers,"
             " underscores, dashes or slashes."))
-
+    
     def clean_url(self):
         """
         Checks if url has trailing slash and raises 
         ValidationError if not..
-
+        
         """
-
+        
         data = self.cleaned_data["url"]
-
+        
         if data[-1] != "/":
             raise ValidationError(_(u"You should add a trailing slash at the end of the url."))
-
+        
         return data
-
+    
     class Meta:
         model = FlatPage

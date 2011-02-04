@@ -83,15 +83,7 @@ EMAIL_SUBJECT_PREFIX = u""
 EMAIL_USE_TLS = True
 SERVER_EMAIL = ""
 
-LANGUAGES = (
-    ("tr", "tr"),
-    ("en", "en"),
-)
-
-LOCALES = {
-    'tr': 'tr_TR.UTF-8',
-    'en': 'en_US.UTF-8',
-}
+LOCALE = "tr_TR.UTF-8"
 
 CSRF_COOKIE_DOMAIN = ".raptiye.org"
 
