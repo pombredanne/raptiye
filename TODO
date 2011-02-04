@@ -1,10 +1,6 @@
 Important changes to remember:
 
- - master [2.2]
- |
- `--> django-rosetta integration
- |
- - 2.2.1 (polishing)
+ - master [2.2.1] (polishing)
  |
  `--> add "show all" for subscribed entries (js would be fine?)
  `--> monthly/yearly pages needed with calendar support
