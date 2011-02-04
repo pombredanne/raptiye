@@ -25,10 +25,10 @@ from raptiye.users.models import UserProfile
 __all__ = ("ProfileForm",)
 
 class ProfileForm(forms.Form):
-    first_name = forms.CharField(label=_("first name"), max_length=30, required=False)
-    last_name = forms.CharField(label=_("last name"), max_length=30, required=False)
-    email = forms.EmailField(label=_("e-mail address"))
-    web_site = forms.URLField(label=_("web site"), required=False, verify_exists=True)
+    first_name = forms.CharField(label=_(u"First Name"), max_length=30, required=False)
+    last_name = forms.CharField(label=_(u"Last Name"), max_length=30, required=False)
+    email = forms.EmailField(label=_(u"E-Mail Address"))
+    web_site = forms.URLField(label=_(u"Web Site"), required=False, verify_exists=True)
     
     def __init__(self, *args, **kwargs):
         if kwargs.has_key("instance"):

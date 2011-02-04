@@ -32,11 +32,9 @@ __all__ = ("FlatPageForm",)
 class FlatPageForm(forms.ModelForm):
     tags = TagField(widget=AutoCompleteTagInput(model=Entry), required=False)
     content = forms.CharField(widget=CKEditorInput, required=False)
-    url = forms.RegexField(label=_("URL"), max_length=100, regex=r'^[-\w/]+$',
-        help_text = _("Example: '/about/contact/'. Make sure to have leading"
-            " and trailing slashes."),
-        error_message = _("This value must contain only letters, numbers,"
-            " underscores, dashes or slashes."))
+    url = forms.RegexField(label=_(u"URL"), max_length=100, regex=r'^[-\w/]+$',
+        help_text = _(u"Example: '/about/contact/'. Make sure to have leading and trailing slashes."),
+        error_message = _(u"This value must contain only letters, numbers, underscores, dashes or slashes."))
     
     def clean_url(self):
         """
