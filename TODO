@@ -1,6 +1,10 @@
 Important changes to remember:
 
- - master [2.2.1] (polishing)
+ - 2.2.1 [sites]
+ |
+ `--> subdomain publishing with base theme support
+ |
+ - 2.2.2 [polishing]
  |
  `--> add "show all" for subscribed entries (js would be fine?)
  `--> monthly/yearly pages needed with calendar support
@@ -11,13 +15,13 @@ Important changes to remember:
  `--> start a changelog
  `--> fix todo's & fixme's in code
  |
- - 2.3 (comments branch)
+ - 2.3 [comments]
  |
  `--> investigate db migration applications for django
  `--> will be planned
  `--> all ajax calls should be backed up with normal request & responses
  |
- - 2.4 (social branch)
+ - 2.4 [social]
  |
  `--> twitter support needed
  |    `--> twitter box
@@ -25,16 +29,16 @@ Important changes to remember:
  `--> facebook support needed
  `--> openid/oauth support needed for single signon
  |
- - 2.5 (template branch)
+ - 2.5 [template]
  |
  `--> templates should be easily changable maybe through admin panel using some app?
  |
- - 2.6 (admin branch)
+ - 2.6 [admin]
  |
  `--> move settings for raptiye to admin panel
  `--> grappelli?
  |
- - 2.7 (polishing)
+ - 2.7 [polishing]
  |
  `--> create easy_install scripts
  `--> create arch linux package
