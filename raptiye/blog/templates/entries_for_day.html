@@ -40,9 +40,11 @@
                         {% endwith %}
                     </div>
                     <div class="align_right smallplus">
-                        {% with next_day as nday %}
-                            <a href="{% url blog:entries_on_date nday.year, nday.month, nday.day %}">Sonraki Gün</a> &raquo;
-                        {% endwith %}
+                        {% if next_day %}
+                            {% with next_day as nday %}
+                                <a href="{% url blog:entries_on_date nday.year, nday.month, nday.day %}">Sonraki Gün</a> &raquo;
+                            {% endwith %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="both_sides_cleared"></div>
