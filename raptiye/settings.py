@@ -198,8 +198,3 @@ INSTALLED_APPS = (
     'raptiye.contrib.flatpages',
     # 'raptiye.users',
 )
-
-try:
-    from raptiye.local_settings import *
-except ImportError:
-    pass
