@@ -3,17 +3,17 @@
 {% comment %}
     raptiye
     Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-
+    
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
+    
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
+    
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
@@ -27,11 +27,7 @@
 
 {% block content %}
     {% regroup entry_list|dictsortreversed:"sticky" by sticky as ordered_event_list %}
-
-    <div class="grid_6 alpha">
-        {% include "sidebar.html" %}
-    </div>
-
+    
     <div class="grid_10 omega">
         {% for group in ordered_event_list %}
             {% for entry in group.list|dictsortreversed:"datetime" %}
@@ -39,36 +35,37 @@
                     <div class="blog_entry">
                         <div class="blog_entry_title">
                             <h2 class="no_bottom_margin">
-                                <a href="{{ entry.get_url }}" title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
+                                <a href="{{ entry.get_url }}" 
+                                    title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
                             </h2>
+                            
                             <div class="smallplus">
                                 {% include "tags/tags_of_entry.html" %}
                             </div>
                         </div>
-
+                        
                         <div class="blog_entry_content blog_text">
-                            {% if entry.content|exceeds_limit %}
-                                {{ entry.content|safe|truncatewords_html:150 }}
-                            {% else %}
-                                {{ entry.content|safe }}
-                            {% endif %}
+                            {{ entry.content|safe|truncatewords_html:150 }}
                         </div>
-
-                        <div class="blog_entry_more blog_text">
-                            &raquo;
-                            <a href="{{ entry.get_url }}" class="ulink">Devamını okumak için tıklayın..</a>
-                            &laquo;
-                        </div>
-
+                        
+                        {% if entry.content|exceeds_limit %}
+                            <div class="blog_entry_more blog_text">
+                                &raquo;
+                                <a href="{{ entry.get_url }}" class="ulink">Devamını okumak için tıklayın..</a>
+                                &laquo;
+                            </div>
+                        {% endif %}
+                        
                         <div class="blog_entry_footer">
                             <div class="align_left small">
                                 {{ entry.datetime }}
                             </div>
+                            
                             <div class="align_right small">
                                 {% include "share_on_social.html" %}
                             </div>
                         </div>
-
+                        
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -80,7 +77,7 @@
                 </div>
             </div>
         {% endfor %}
-
+        
         <div id="pagination">
             {% if is_paginated %}{% paginator 4 %}{% endif %}
         </div>
