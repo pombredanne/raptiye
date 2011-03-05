@@ -21,7 +21,6 @@ import HTMLParser
 
 from django import template
 from django.conf import settings
-from django.contrib.sites.models import Site
 
 from raptiye.blog.functions import is_app_installed
 
@@ -29,11 +28,9 @@ register = template.Library()
 
 @register.filter
 def emotions(entry):
-    if settings.ENABLE_EMOTIONS:
+    if not settings.ENABLE_EMOTIONS:
         return entry
-
-    site = Site.objects.get_current()
-
+    
     icons = {
         ":)": "%simages/smiley/face-smile.png" % settings.MEDIA_URL,
         ":|": "%simages/smiley/face-plain.png" % settings.MEDIA_URL,
@@ -41,10 +38,10 @@ def emotions(entry):
         ":D": "%simages/smiley/face-grin.png" % settings.MEDIA_URL,
         ";-)": "%simages/smiley/face-wink.png" % settings.MEDIA_URL,
     }
-
+    
     for smiley, src in icons.iteritems():
-        entry = entry.replace(smiley, " <img src='%s' align='absmiddle'> " % (site.domain, src))
-
+        entry = entry.replace(smiley, " <img src='%s' align='absmiddle'> " % (src))
+    
     return entry
 
 @register.filter
@@ -59,17 +56,17 @@ def code_colorizer(entry):
     Uses BeautifulSoup to find and parse the code in the entry 
     that will be colorized and changes it according to the syntax 
     specs using pygments.
-
+    
     The HTML code should include the colorized code wrapped into a 
     div which has language (e.g. python) as id and "code" as class 
     attributes.
-
+    
     Best part of using a filter is that we don't have to change the 
     real post containing the code. The worst part is that we have to 
     search for the code layer in each post.
-
+    
     """
-
+    
     if settings.COLORIZE_CODE:
         try:
             from BeautifulSoup import BeautifulSoup, Tag
@@ -78,15 +75,15 @@ def code_colorizer(entry):
             from pygments.formatters import HtmlFormatter
         except ImportError:
             return entry
-
+        
         try:
             parser = BeautifulSoup(entry, convertEntities=BeautifulSoup.ALL_ENTITIES)
         except HTMLParser.HTMLParseError:
             return entry
-
+        
         # searching for code blocks in the blog entry
         code_blocks = parser.findAll("div", attrs={"class": "code"})
-
+        
         if len(code_blocks) > 0:
             for block in code_blocks:
                 # if the code block's wrapper div doesn't have an id
@@ -95,7 +92,7 @@ def code_colorizer(entry):
                     language = block.attrMap["id"]
                 else:
                     continue
-
+                
                 # finding the exact place of the code
                 layer = block.div if block.div else block
                 # removing any html tags inside the code block
@@ -108,9 +105,9 @@ def code_colorizer(entry):
                 colorized_code = Tag(parser, "div") if block.div else Tag(parser, "div", attrs=(("id", language), ("class", "code")))
                 colorized_code.insert(0, highlight(code, lexer, formatter))
                 layer.replaceWith(colorized_code)
-
+            
             return parser.renderContents()
-
+    
     return entry
 
 @register.filter
