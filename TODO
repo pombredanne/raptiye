@@ -1,9 +1,5 @@
 Important changes to remember:
 
- - 2.2.2 [sites]
- |
- `--> subdomain publishing with base theme support
- |
  - 2.2.3 [polishing]
  |
  `--> add "show all" for subscribed entries (js would be fine?)
