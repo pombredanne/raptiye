@@ -81,6 +81,17 @@
                         
                         <div class="align_right small">
                             {% include "share_on_social.html" %}
+                            
+                            |
+                            
+                            {% if user.is_superuser %}
+                                <div class="small inline">
+                                    <a href="{% url admin:blog_entry_change entry.id %}"
+                                        title="yazıyı düzenlemek için tıklayın." class="nolink">
+                                        <img src="{{ MEDIA_URL|default:'/media/' }}template/images/edit.png">
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     
