@@ -3,17 +3,17 @@
 {% comment %}
     raptiye
     Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-
+    
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
+    
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
+    
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
@@ -26,66 +26,72 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid_6 alpha">
-        {% include "sidebar.html" %}
-    </div>
     <div class="grid_10 omega">
         <div class="blog_entry_container vertical_first">
             <div class="blog_entry">
-                <h2 class="smaller">{{ day|date:"d.m.Y, l" }} Tarihinde Yayınlanmış Yazılar</h2>
+                <h2 class="smaller">
+                    {{ day|date:"d.m.Y, l" }} Tarihinde Yayınlanmış Yazılar
+                </h2>
+                
                 <div class="no_bottom_margin">
-                    <div class="align_left smallplus">
-                        {% with previous_day as pday %}
-                            &laquo; <a href="{% url blog:entries_on_date pday.year, pday.month, pday.day %}">Önceki Gün</a>
-                        {% endwith %}
-                    </div>
-                    <div class="align_right smallplus">
-                        {% if next_day %}
-                            {% with next_day as nday %}
-                                <a href="{% url blog:entries_on_date nday.year, nday.month, nday.day %}">Sonraki Gün</a> &raquo;
+                    {% if previous_day %}
+                        <div class="align_left smallplus">
+                            {% with previous_day as pd %}
+                                &laquo; <a href="{% url blog:entries_on_date pd.year, pd.month, pd.day %}">Önceki Gün</a>
                             {% endwith %}
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
+                    
+                    {% if next_day %}
+                        <div class="align_right smallplus">
+                            {% with next_day as nd %}
+                                <a href="{% url blog:entries_on_date nd.year, nd.month, nd.day %}">Sonraki Gün</a> &raquo;
+                            {% endwith %}
+                        </div>
+                    {% endif %}
                 </div>
+                
                 <div class="both_sides_cleared"></div>
             </div>
         </div>
-
+        
         {% for entry in entry_list %}
             <div class="blog_entry_container{% if forloop.last %} vertical_last{% endif %}">
                 <div class="blog_entry">
                     <div class="blog_entry_title">
                         <h2 class="no_bottom_margin">
-                            <a href="{{ entry.get_url }}" title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
+                            <a href="{{ entry.get_url }}" 
+                                title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
                         </h2>
+                        
                         <div class="smallplus">
                             {% include "tags/tags_of_entry.html" %}
                         </div>
                     </div>
-
+                    
                     <div class="blog_entry_content blog_text">
-                        {% if entry.content|exceeds_limit %}
-                            {{ entry.content|safe|truncatewords_html:150 }}
-                        {% else %}
-                            {{ entry.content|safe }}
-                        {% endif %}
+                        {{ entry.content|safe|truncatewords_html:150 }}
                     </div>
-
-                    <div class="blog_entry_more blog_text">
-                        &raquo;
-                        <a href="{{ entry.get_url }}" class="ulink">Devamını okumak için tıklayın..</a>
-                        &laquo;
-                    </div>
-
+                    
+                    {% if entry.content|exceeds_limit %}
+                        <div class="blog_entry_more blog_text">
+                            &raquo;
+                            <a href="{{ entry.get_url }}" 
+                                class="ulink">Devamını okumak için tıklayın..</a>
+                            &laquo;
+                        </div>
+                    {% endif %}
+                    
                     <div class="blog_entry_footer">
                         <div class="align_left small">
                             {{ entry.datetime }}
                         </div>
+                        
                         <div class="align_right small">
                             {% include "share_on_social.html" %}
                         </div>
                     </div>
-
+                    
                     <div class="clear"></div>
                 </div>
             </div>
@@ -93,8 +99,9 @@
             <div class="blog_entry_container">
                 <div class="blog_entry">
                     <img src="{{ MEDIA_URL|default:'/media/' }}template/images/404.png" class="align_right">
+                    
                     <h2>Hiç Yazı Bulunamadı</h2>
-
+                    
                     <span class="small">
                         <strong><em>{{ day|date:"d.m.Y, l" }}</em></strong> tarihinde hiç yazı yazılmamış. Dilerseniz önceki ve sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana sayfaya yönlenebilirsiniz.
                     </span>

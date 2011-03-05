@@ -19,6 +19,7 @@
 
 from django.conf import settings
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 from raptiye.blog.forms import EntryForm
 from raptiye.blog.models import *
@@ -28,13 +29,17 @@ class EntryAdmin(admin.ModelAdmin):
     date_hierarchy = "datetime"
     fieldsets = (
         (None, {
-            "fields": ("title", "datetime", "content", "tags",
+            "fields": ("title", "datetime", "content", "tags", "sites",
                 ("comments_enabled", "sticky", "published"), "slug"),
+        }),
+        (_(u"Advanced Options"), {
+            "classes": ("collapse",),
+            "fields": ("template_name",)
         }),
     )
     form = EntryForm
-    list_display = ("title", "datetime", "sticky", "published")
-    list_filter = ("published", "sticky")
+    list_display = ("title", "datetime", "get_sites", "sticky", "published")
+    list_filter = ("published", "sticky", "sites")
     list_per_page = settings.ADMIN_LIST_PER_PAGE
     ordering = ("-datetime", "title")
     prepopulated_fields = {"slug": ("title",)}

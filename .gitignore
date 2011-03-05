@@ -5,7 +5,7 @@
 */media/images/resimler/
 */media/images/upload/
 *tmproj
-local_settings.py
+local_settings*.py
 ._*
 .DS_Store
 

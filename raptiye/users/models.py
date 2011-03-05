@@ -22,8 +22,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from raptiye.blog.models import Entry
-
 class UserProfile(models.Model):
     """
     Stores additional information about the users..
@@ -34,8 +32,8 @@ class UserProfile(models.Model):
     avatar = models.URLField(_(u"Avatar"), default=settings.DEFAULT_AVATAR)
     web_site = models.URLField(_(u"Web Site"), blank=True)
     comments_count = models.PositiveIntegerField(_(u"Comments Count"), default=0, editable=False)
-    subscribed_entries = models.ManyToManyField(Entry, related_name="subscribed_users", verbose_name=_(u"Subscribed Entries"),
-        null=True, db_table="subscribed_entries_per_profile")
+    subscribed_entries = models.ManyToManyField("blog.Entry", related_name="subscribed_users", 
+        verbose_name=_(u"Subscribed Entries"), null=True, db_table="subscribed_entries_per_profile")
     last_modified = models.DateTimeField(_(u"Last Modified Date"), auto_now=True)
     
     def __unicode__(self):

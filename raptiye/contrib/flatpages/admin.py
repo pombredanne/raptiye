@@ -31,12 +31,12 @@ class FlatPageAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('url', 'title', 'content', 'tags', 'sites', 'show_on_homepage')
         }),
-        (_('Advanced options'), {
+        (_('Advanced Options'), {
             'classes': ('collapse',),
             'fields': ('enable_comments', 'registration_required', 'template_name')
         }),
     )
-    list_display = ('url', 'title', 'show_on_homepage', 'tags')
+    list_display = ('url', 'title', 'get_sites', 'tags', 'show_on_homepage')
     list_filter = ('sites', 'enable_comments', 'registration_required', 'show_on_homepage')
     search_fields = ('url', 'title')
 

@@ -3,17 +3,17 @@
 {% comment %}
     raptiye
     Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-
+    
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-
+    
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
+    
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
@@ -39,10 +39,11 @@
 
 {% block body %}
     {% get_flatpages %}
-
+    
     <div class="container_16">
         <div id="header_top"></div>
-        <div id="header" class="grid_16">
+        
+        <div id="header" class="grid_16 alpha omega">
             <div id="top_menu" class="grid_16 alpha omega">
                 <li class="first">
                     &raquo;
@@ -54,7 +55,7 @@
                         <a href="{{ link.url }}">{{ link.title }}</a>
                     </li>
                 {% endfor %}
-
+                
                 <div id="search_container">
                     <form action="{% url blog:search %}" method="get" accept-charset="utf-8">
                         <input type="text" name="keywords">
@@ -62,27 +63,40 @@
                     </form>
                 </div>
             </div>
-            <div class="grid_8 alpha">
+            
+            <div class="grid_9 alpha">
                 <div id="site_logo" class="grid_6 alpha">
                     <a href="{% url index %}"><img src="{{ MEDIA_URL|default:'/media/' }}template/images/site_logo.png"></a>
                 </div>
-                <div class="suffix_2 omega"></div>
+                
+                <div class="suffix_3 omega"></div>
             </div>
-            <div class="grid_8 omega">
+            
+            <div class="grid_7 omega">
                 <div id="social_icons_container">
                     <a href="{% rss_url %}" title="raptiye'yi RSS üzerinden takip etmek için tıklayın!" id="rss_menu" class="social_icon"></a>
+                    
                     <a href="http://twitter.com/tunix/" title="twitter sayfam için tıklayın!" id="twitter_menu" class="social_icon" target="_blank"></a>
+                    
                     <a href="http://www.flickr.com/photos/tunix/" title="flickr sayfam için tıklayın!" id="flickr_menu" class="social_icon" target="_blank"></a>
+                    
                     <a href="http://www.facebook.com/alper.kanat/" title="facebook sayfam için tıklayın!" id="facebook_menu" class="social_icon" target="_blank"></a>
+                    
                     <a href="http://www.vimeo.com/tunix/" title="vimeo sayfam için tıklayın!" id="vimeo_menu" class="social_icon" target="_blank"></a>
                 </div>
             </div>
         </div>
-        <div id="content" class="grid_16">
+        
+        <div id="content" class="grid_16 alpha omega">
+            <div class="grid_6 alpha">
+                {% include "sidebar.html" %}
+            </div>
+            
             {% block content %}{% endblock %}
         </div>
-        <div id="footer" class="grid_16 text_center small">
-            raptiye {% version %}, Python ve django kullanılarak yazılmıştır.
+        
+        <div id="footer" class="grid_16 alpha omega text_center small">
+            raptiye {% version %}, python ve django kullanılarak yazılmıştır.
             <br>
             Site genelindeki içerik <span class="bold underline">kaynak göstermek şartıyla</span> serbestçe kullanılabilir.
         </div>

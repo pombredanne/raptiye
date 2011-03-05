@@ -47,7 +47,7 @@ def blog(request, template_name="homepage.html"):
         "page": request.GET.get("page", 1),
         "template_object_name": "entry",
     }
-
+    
     return object_list(request, **params)
 
 def get_entries_for_day(request, year, month, day, template_name="entries_for_day.html"):
@@ -84,10 +84,10 @@ def show_post(request, year, month, day, slug, template_name="detail.html"):
 
 def search(request, template_name="search.html"):
     "Search against all entries using the given keywords"
-
+    
     keywords = request.GET.get("keywords", "")
     result = search_against_entries(keywords)
-
+    
     params = {
         "queryset": result,
         "template_name": template_name,
@@ -97,7 +97,7 @@ def search(request, template_name="search.html"):
             "keywords": keywords
         }
     }
-
+    
     return object_list(request, **params)
 
 def entries_tagged_with(request, tag, template_name="tags/entries_tagged_with.html"):
@@ -112,5 +112,5 @@ def entries_tagged_with(request, tag, template_name="tags/entries_tagged_with.ht
         # (http://code.google.com/p/django-tagging/issues/detail?id=179)
         # "related_tags": True,
     }
-
+    
     return tagged_object_list(request, **params)

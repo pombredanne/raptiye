@@ -34,12 +34,12 @@ DJANGO_DIR = os.path.abspath(os.path.dirname(django.__file__))
 # --- GENERIC SETTINGS ------------
 
 PROJECT_NAME = u"raptiye"
-VERSION = '2.2.1'
+VERSION = '2.2'
 PROJECT_SUBTITLE = u"Quis custodes ipsos custodiet?"
 
 COLORIZE_CODE = False
 ENABLE_EMOTIONS = True
-ENTRIES_PER_PAGE = 10
+ENTRIES_PER_PAGE = 3
 
 RSS_LIMIT = 10
 RSS_URL = ""
@@ -145,7 +145,6 @@ LANGUAGE_CODE = 'tr'
 SITE_ID = 1
 
 USE_I18N = True
-USE_L10N = True
 
 MEDIA_ROOT = '%s/media/' % DOCUMENT_ROOT
 MEDIA_URL = '/media/'
@@ -181,8 +180,10 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader'
+    )),
 )
 
 INSTALLED_APPS = (
@@ -198,8 +199,3 @@ INSTALLED_APPS = (
     'raptiye.contrib.flatpages',
     # 'raptiye.users',
 )
-
-try:
-    from raptiye.local_settings import *
-except ImportError:
-    pass
