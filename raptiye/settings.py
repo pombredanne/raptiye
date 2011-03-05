@@ -39,7 +39,7 @@ PROJECT_SUBTITLE = u"Quis custodes ipsos custodiet?"
 
 COLORIZE_CODE = False
 ENABLE_EMOTIONS = True
-ENTRIES_PER_PAGE = 10
+ENTRIES_PER_PAGE = 3
 
 RSS_LIMIT = 10
 RSS_URL = ""
