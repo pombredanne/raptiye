@@ -54,6 +54,12 @@ ADMIN_LIST_PER_PAGE = 20
 
 
 
+# --- COMMENT SETTINGS ------------
+
+DISQUS_SHORTNAME = PROJECT_NAME
+
+
+
 # --- TAG SETTINGS ----------------
 
 FORCE_LOWERCASE_TAGS = True

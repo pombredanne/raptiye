@@ -25,6 +25,15 @@
     {% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
 {% endblock %}
 
+{% block js %}
+    <script type="text/javascript" charset="utf-8">
+        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}"
+        var disqus_developer = ("{% get_from_settings 'DEBUG' '1' %}" == "True" ? 1 : 0)
+    </script>
+    
+    <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/count.js"></script>
+{% endblock %}
+
 {% block content %}
     {% regroup entry_list|dictsortreversed:"sticky" by sticky as ordered_event_list %}
     
@@ -35,7 +44,7 @@
                     <div class="blog_entry">
                         <div class="blog_entry_title">
                             <h2 class="no_bottom_margin">
-                                <a href="{{ entry.get_url }}" 
+                                <a href="{{ entry.get_url }}"
                                     title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
                             </h2>
                             
@@ -62,6 +71,10 @@
                             </div>
                             
                             <div class="align_right small">
+                                <a href="{{ entry.get_url }}#disqus_thread" data-disqus-identifier="{{ entry.id }}"></a>
+                                
+                                |
+                                
                                 {% include "share_on_social.html" %}
                                 
                                 {% if user.is_superuser %}
