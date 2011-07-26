@@ -95,5 +95,5 @@ def links():
     return {'links': Link.objects.all()}
 
 @register.simple_tag
-def get_from_settings(key):
-	return settings.__getattr__(key, None)
+def get_from_settings(key, default = None):
+	return settings.__getattr__(key, default)
