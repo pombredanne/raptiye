@@ -22,7 +22,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    {% project_name %} | {% project_subtitle %}
+    {% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
 {% endblock %}
 
 {% block content %}

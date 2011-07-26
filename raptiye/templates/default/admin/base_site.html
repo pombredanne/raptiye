@@ -23,7 +23,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    Yönetim Arayüzü @ {% project_name %}
+    Yönetim Arayüzü @ {% get_from_settings 'PROJECT_NAME' %}
 {% endblock %}
 
 {% block branding %}

@@ -21,7 +21,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    yeni kullanıcı kaydı başarılı @ {% project_name %} | {% project_subtitle %}
+    yeni kullanıcı kaydı başarılı @ {% get_from_settings 'PROJECT_NAME' %} | {% get_from_settings 'PROJECT_SUBTITLE' %}
 {% endblock %}
 
 {% block content %}
@@ -36,7 +36,7 @@
                 
                 <div class="both_sides_cleared small">
                     <p>
-                        Yeni kullanıcı kaydınız için gerekli olan aktivasyon adımını başarıyla tamamladınız! Artık {% project_name %}'de dilediğiniz gibi yorum yazabilir, ilgilendiğiniz yazıları takip edebilir ve her şeyden öncelikli olarak haberdar olabilirsiniz.
+                        Yeni kullanıcı kaydınız için gerekli olan aktivasyon adımını başarıyla tamamladınız! Artık {% get_from_settings 'PROJECT_NAME' %}'de dilediğiniz gibi yorum yazabilir, ilgilendiğiniz yazıları takip edebilir ve her şeyden öncelikli olarak haberdar olabilirsiniz.
                     </p>
                     
                     <p class="no_bottom_margin">

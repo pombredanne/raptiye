@@ -27,11 +27,14 @@
         <meta name="keywords" content="linux, css, html, python, arch linux, javascript, java, internet, open source, free software, özgür yazılım, türkiye, istanbul, teknoloji, technology, snowboard, bilişim">
         <meta name="author" content="Alper Kanat">
         <meta name="google-site-verification" content="wUnIOVucgFXwrlqACuiFLX65kAsy3aNanqLs9_yXxOQ">
+        
+        {% block meta %}{% endblock %}
+        
         <link rel="icon" href="/media/images/favicon.png" type="image/png">
         
         {% block styles %}{% endblock %}
         
-        <link href="{% rss_url %}" rel="alternate" type="application/rss+xml" title="raptiye rss kaynağı">
+        <link href="{% get_from_settings 'RSS_URL' %}" rel="alternate" type="application/rss+xml" title="raptiye rss kaynağı">
         
         {% block additional_rss %}
             {# extend this block to include rss urls #}

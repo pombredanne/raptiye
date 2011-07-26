@@ -74,7 +74,7 @@
             
             <div class="grid_7 omega">
                 <div id="social_icons_container">
-                    <a href="{% rss_url %}" title="raptiye'yi RSS üzerinden takip etmek için tıklayın!" id="rss_menu" class="social_icon"></a>
+                    <a href="{% get_from_settings 'RSS_URL' %}" title="raptiye'yi RSS üzerinden takip etmek için tıklayın!" id="rss_menu" class="social_icon"></a>
                     
                     <a href="http://twitter.com/tunix/" title="twitter sayfam için tıklayın!" id="twitter_menu" class="social_icon" target="_blank"></a>
                     
@@ -96,7 +96,7 @@
         </div>
         
         <div id="footer" class="grid_16 alpha omega text_center small">
-            raptiye {% version %}, python ve django kullanılarak yazılmıştır.
+            raptiye {% get_from_settings "VERSION" %}, python ve django kullanılarak yazılmıştır.
             <br>
             Site genelindeki içerik <span class="bold underline">kaynak göstermek şartıyla</span> serbestçe kullanılabilir.
         </div>

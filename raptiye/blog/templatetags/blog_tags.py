@@ -95,17 +95,5 @@ def links():
     return {'links': Link.objects.all()}
 
 @register.simple_tag
-def project_name():
-    return settings.PROJECT_NAME
-
-@register.simple_tag
-def version():
-    return settings.VERSION
-
-@register.simple_tag
-def project_subtitle():
-    return settings.PROJECT_SUBTITLE
-
-@register.simple_tag
-def rss_url():
-    return settings.RSS_URL
+def get_from_settings(key):
+	return settings.__getattr__(key, None)

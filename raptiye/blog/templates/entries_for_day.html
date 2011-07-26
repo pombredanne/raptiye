@@ -22,7 +22,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    {{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% project_name %} | {% project_subtitle %}
+    {{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
 {% endblock %}
 
 {% block content %}
