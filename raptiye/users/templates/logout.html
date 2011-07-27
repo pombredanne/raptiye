@@ -21,7 +21,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    güle güle @ {% project_name %} | {% project_subtitle %}
+    güle güle @ {% get_from_settings 'PROJECT_NAME' %} | {% get_from_settings 'PROJECT_SUBTITLE' %}
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,7 @@
                 
                 <div class="both_sides_cleared small">
                     <p>
-                        {% project_name %}'den başarıyla çıkış yaptınız! Yeniden giriş yapmak isterseniz sol alttaki <a href="{% url users:login %}" class="ulink">giriş</a> bağlantısına tıklayabilirsiniz.
+                        {% get_from_settings 'PROJECT_NAME' %}'den başarıyla çıkış yaptınız! Yeniden giriş yapmak isterseniz sol alttaki <a href="{% url users:login %}" class="ulink">giriş</a> bağlantısına tıklayabilirsiniz.
                     </p>
                     
                     <p class="no_bottom_margin">

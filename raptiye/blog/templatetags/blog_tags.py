@@ -21,6 +21,7 @@ from datetime import date
 
 from django import template
 from django.conf import settings
+from django.utils.safestring import mark_safe
 
 from raptiye.blog.functions import get_latest_entries
 from raptiye.blog.models import Link
@@ -30,15 +31,36 @@ register = template.Library()
 
 @register.simple_tag
 def calculate_age():
-    return (date.today() - settings.BIRTH_DATE).days/365
+    return (date.today() - settings.BIRTH_DATE).days / 365
 
-@register.simple_tag
-def construct_calendar(year=date.today().year, month=date.today().month, day=date.today().day):
-    wc = WebCalendar(get_latest_entries(), locale=settings.LOCALE)
-    return wc.formatmonth(year, month, day)
+@register.inclusion_tag('webcal.html', takes_context = True)
+def webcal(context):
+	wc = WebCalendar(get_latest_entries(), locale = settings.LOCALE)
+	
+	if context.has_key("day"):
+		year = context["day"].year
+		month = context["day"].month
+		day = context["day"].day
+	elif context.has_key("month"):
+		year = context["month"].year
+		month = context["month"].month
+		day = None
+	elif context.has_key("entry"):
+		year = context["entry"].datetime.year
+		month = context["entry"].datetime.month
+		day = context["entry"].datetime.day
+	else:
+		today = date.today()
+		year = today.year
+		month = today.month
+		day = today.day
+	
+	return {
+		"html": mark_safe(wc.formatmonth(year, month, day))
+	}
 
-@register.inclusion_tag('pagination.html', takes_context=True)
-def paginator(context, adjacent_pages=2):
+@register.inclusion_tag('pagination.html', takes_context = True)
+def paginator(context, adjacent_pages = 2):
     """
     To be used in conjunction with the object_list generic view.
 
@@ -73,17 +95,5 @@ def links():
     return {'links': Link.objects.all()}
 
 @register.simple_tag
-def project_name():
-    return settings.PROJECT_NAME
-
-@register.simple_tag
-def version():
-    return settings.VERSION
-
-@register.simple_tag
-def project_subtitle():
-    return settings.PROJECT_SUBTITLE
-
-@register.simple_tag
-def rss_url():
-    return settings.RSS_URL
+def get_from_settings(key, default = None):
+	return settings.__getattr__(key, default)

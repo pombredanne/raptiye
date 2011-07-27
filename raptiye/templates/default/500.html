@@ -21,7 +21,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    sunucu hatası @ {% project_name %} | {% project_subtitle %}
+    sunucu hatası @ {% get_from_settings 'PROJECT_NAME' %} | {% get_from_settings 'PROJECT_SUBTITLE' %}
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,7 @@
                 
                 <div class="both_sides_cleared small">
                     <p>
-                        {% project_name %}, sunucudan kaynaklanan bir hata nedeniyle yaptığınız sayfa isteğine
+                        {% get_from_settings 'PROJECT_NAME' %}, sunucudan kaynaklanan bir hata nedeniyle yaptığınız sayfa isteğine
                         cevap veremiyor. Hatayla ilgili detaylı bir e-posta, geliştirici takımına
                         iletildi.
                     </p>

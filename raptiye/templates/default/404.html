@@ -21,7 +21,7 @@
 {% load blog_tags %}
 
 {% block title %}
-    sayfa bulunamadı @ {% project_name %} | {% project_subtitle %}
+    sayfa bulunamadı @ {% get_from_settings 'PROJECT_NAME' %} | {% get_from_settings 'PROJECT_SUBTITLE' %}
 {% endblock %}
 
 {% block content %}
@@ -38,7 +38,7 @@
                 
                 <div class="both_sides_cleared small">
                     <p>
-                        Aradığınız sayfalara ulaşılamıyor. {% project_name %} dışındaki bir bağlantıdan 
+                        Aradığınız sayfalara ulaşılamıyor. {% get_from_settings 'PROJECT_NAME' %} dışındaki bir bağlantıdan 
                         bu sayfaya ulaşmaya çalışıyorsanız lütfen bağlantıyı sağlayan siteyle iletişime 
                         geçerek ya doğru bağlantıyı sağlamalarını ya da bağlantıyı sitelerinden 
                         kaldırmalarını isteyiniz.

@@ -22,7 +22,19 @@
 {% load blog_tags %}
 
 {% block title %}
-    {{ entry.title }} @ gunluk.{% project_name %} | {% project_subtitle %}
+    {{ entry.title }} @ gunluk.{% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" charset="utf-8">
+        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}"
+        var disqus_developer = ("{% get_from_settings 'DEBUG' '1' %}" == "True" ? 1 : 0)
+        var disqus_identifier = "{{ entry.id }}"
+        var disqus_url = "http://{{ request.get_host }}{{ entry.get_url }}"
+        var disqus_title = "{{ entry.title }} @ {% get_from_settings 'PROJECT_NAME' %}"
+    </script>
+    
+    <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/embed.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -33,6 +45,7 @@
                     <h2 class="no_bottom_margin">
                         {{ entry.title }}
                     </h2>
+                    
                     <div class="smallplus">
                         {% include "tags/tags_of_entry.html" %}
                     </div>
@@ -42,16 +55,17 @@
                     {{ entry.content|emotions|safe }}
                 </div>
 
-                <div class="blog_entry_footer">
+                <div class="blog_entry_footer_in_detail">
                     <div class="align_left small">
                         {{ entry.datetime }}
                     </div>
+                    
                     <div class="align_right small">
                         {% include "share_on_social.html" %}
                         
-                        |
-                        
                         {% if user.is_superuser %}
+                            |
+                            
                             <div class="small inline">
                                 <a href="{% url admin:blog_entry_change entry.id %}"
                                     title="yazıyı düzenlemek için tıklayın." class="nolink">
@@ -60,7 +74,14 @@
                             </div>
                         {% endif %}
                     </div>
+                    
+                    <div class="clear"></div>
                 </div>
+                
+                <div class="blog_entry_comments small">
+                    <div id="disqus_thread"></div>
+                </div>
+                
                 <div class="clear"></div>
             </div>
         </div>
