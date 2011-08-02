@@ -109,7 +109,7 @@
                                 <div class="small inline">
                                     <a href="{% url admin:blog_entry_change entry.id %}"
                                         title="yazıyı düzenlemek için tıklayın." class="nolink">
-                                        <img src="{{ MEDIA_URL|default:'/media/' }}template/images/edit.png">
+                                        <img src="{{ STATIC_URL|default:'/media/' }}template/images/edit.png">
                                     </a>
                                 </div>
                             {% endif %}
@@ -122,7 +122,7 @@
         {% empty %}
             <div class="blog_entry_container">
                 <div class="blog_entry">
-                    <img src="{{ MEDIA_URL|default:'/media/' }}template/images/404.png" class="align_right">
+                    <img src="{{ STATIC_URL|default:'/media/' }}template/images/404.png" class="align_right">
                     
                     <h2>Hiç Yazı Bulunamadı</h2>
                     

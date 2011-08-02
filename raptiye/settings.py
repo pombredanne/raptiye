@@ -152,9 +152,12 @@ SITE_ID = 1
 
 USE_I18N = True
 
-MEDIA_ROOT = '%s/media/' % DOCUMENT_ROOT
-MEDIA_URL = '/media/'
+MEDIA_ROOT = '%s/media/images/upload/' % DOCUMENT_ROOT
+MEDIA_URL = '/media/images/upload/'
 STATIC_URL = '/media/'
+STATICFILES_DIRS = (
+    "%s/media" % DOCUMENT_ROOT,
+)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
@@ -201,6 +204,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'tagging',
     # 'registration',
     # 'profiles',

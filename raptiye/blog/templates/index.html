@@ -22,18 +22,18 @@
 {% load flatpage_tags %}
 
 {% block styles %}
-    <link rel="stylesheet" href="/media/template/css/reset.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/media/template/css/text.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/media/template/css/960.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/media/template/css/colorbox.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/media/css/pygments.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/media/template/css/style.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}template/css/reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}template/css/text.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}template/css/960.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}template/css/colorbox.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}css/pygments.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/media/' }}template/css/style.css" type="text/css" media="screen" charset="utf-8">
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="/media/template/js/jquery.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/media/template/js/jquery.colorbox-min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/media/template/js/raptiye.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/media/' }}template/js/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/media/' }}template/js/jquery.colorbox-min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/media/' }}template/js/raptiye.js"></script>
     {% block js %}{% endblock %}
 {% endblock %}
 
@@ -66,7 +66,7 @@
             
             <div class="grid_9 alpha">
                 <div id="site_logo" class="grid_6 alpha">
-                    <a href="{% url index %}"><img src="{{ MEDIA_URL|default:'/media/' }}template/images/site_logo.png"></a>
+                    <a href="{% url index %}"><img src="{{ STATIC_URL|default:'/media/' }}template/images/site_logo.png"></a>
                 </div>
                 
                 <div class="suffix_3 omega"></div>
