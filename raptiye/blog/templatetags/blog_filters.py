@@ -32,11 +32,11 @@ def emotions(entry):
         return entry
     
     icons = {
-        ":)": "%simages/smiley/face-smile.png" % settings.MEDIA_URL,
-        ":|": "%simages/smiley/face-plain.png" % settings.MEDIA_URL,
-        ":(": "%simages/smiley/face-sad.png" % settings.MEDIA_URL,
-        ":D": "%simages/smiley/face-grin.png" % settings.MEDIA_URL,
-        ";-)": "%simages/smiley/face-wink.png" % settings.MEDIA_URL,
+        ":)": "%simages/smiley/face-smile.png" % settings.STATIC_URL,
+        ":|": "%simages/smiley/face-plain.png" % settings.STATIC_URL,
+        ":(": "%simages/smiley/face-sad.png" % settings.STATIC_URL,
+        ":D": "%simages/smiley/face-grin.png" % settings.STATIC_URL,
+        ";-)": "%simages/smiley/face-wink.png" % settings.STATIC_URL,
     }
     
     for smiley, src in icons.iteritems():
