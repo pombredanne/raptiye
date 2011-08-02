@@ -154,7 +154,7 @@ USE_I18N = True
 
 MEDIA_ROOT = '%s/media/' % DOCUMENT_ROOT
 MEDIA_URL = '/media/'
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+STATIC_URL = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
