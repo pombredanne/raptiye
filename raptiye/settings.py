@@ -67,15 +67,6 @@ MAX_TAG_LENGTH = 50
 
 
 
-# --- USER ACCOUNT SETTINGS -------
-
-# AUTH_PROFILE_MODULE = 'users.UserProfile'
-
-# used by django-registration
-# ACCOUNT_ACTIVATION_DAYS = 7
-
-
-
 # --- OTHER SETTINGS --------------
 
 EMAIL_FAIL_SILENCE = True
@@ -96,14 +87,6 @@ CSRF_COOKIE_DOMAIN = ".raptiye.org"
 DEFAULT_CHARSET='utf-8'
 DEFAULT_CONTENT_TYPE = 'text/html'
 FILE_CHARSET = 'utf-8'
-
-LOGIN_URL = "/users/login/"
-LOGOUT_URL = "/users/logout/"
-LOGIN_REDIRECT_URL = "/"
-DEFAULT_AVATAR = lambda: MEDIA_URL + "template/images/default_avatar.png"
-
-# URL Pattern Naming used here..
-REDIRECT_URL = "blog"
 
 INTERNAL_IPS = ()
 
@@ -206,9 +189,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'tagging',
-    # 'registration',
-    # 'profiles',
     'raptiye.blog',
     'raptiye.contrib.flatpages',
-    # 'raptiye.users',
 )
+
