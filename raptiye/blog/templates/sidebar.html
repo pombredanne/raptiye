@@ -73,17 +73,3 @@
     </div>
 </div>
 
-{% if "raptiye.users"|is_installed %}
-    <div class="sidebox_container vertical_last">
-        <div class="sidebox_content">
-            <div class="sidebox_content_title">
-                <img src="{{ STATIC_URL|default:'/media/' }}template/images/accounts.png">
-                <strong>üyelik</strong>
-            </div>
-
-            <div class="sidebox_content_body list small">
-                {% include "accounts.html" %}
-            </div>
-        </div>
-    </div>
-{% endif %}

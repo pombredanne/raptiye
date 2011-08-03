@@ -266,67 +266,13 @@ button[type=submit] {
     margin-bottom: -4px;
 }
 
-#users_form {
-    border-collapse: separate;
-    border-spacing: 20px 0;
-}
-
-#users_form .field_error {
+.field_error {
     margin-top: 3px;
     padding: 3px 8px 3px 8px;
     max-width: 250px;
     background-color: #990000;
     border: 1px solid #333;
     color: white;
-}
-
-#users_form_error {
-    margin: 20px auto;
-    padding: 3px 8px 3px 8px;
-    width: 400px;
-    background-color: #990000;
-    border: 1px solid #333;
-    color: white;
-}
-
-#users_form_buttons {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-#profile_avatar {
-    width: 80px;
-    height: 80px;
-}
-
-#profile_info, #profile_stats, #subscribed_entries_of_user {
-    margin-top: 20px;
-}
-
-#profile_action_container {
-    margin-bottom: 40px;
-}
-
-.profile_action_link {
-    margin-right: 20px;
-}
-
-.statics_table {
-    width: 100%;
-    text-align: left;
-}
-
-.statics_table th {
-    padding-bottom: 5px;
-}
-
-.statics_table tr.table_dark_row {
-    background-color: #eee;
-}
-
-.statics_table td {
-    padding: 3px 5px 3px 5px;
-    border: 1px solid #ccc;
 }
 
 .left_table {

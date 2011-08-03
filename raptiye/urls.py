@@ -30,12 +30,8 @@ urlpatterns = patterns('',
     (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog'))
 )
 
-if is_app_installed('raptiye.users'):
-    urlpatterns += patterns('',
-        (r'^users/', include('raptiye.users.urls', namespace='users', app_name='users')),
-    )
-
 if is_app_installed('rosetta'):
     urlpatterns += patterns('',
         url(r'^rosetta/', include('rosetta.urls')),
     )
+
