@@ -27,11 +27,11 @@
 
 {% block js %}
     <script type="text/javascript" charset="utf-8">
-        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}"
-        var disqus_developer = ("{% get_from_settings 'DEBUG' '1' %}" == "True" ? 1 : 0)
-        var disqus_identifier = "{{ entry.id }}"
-        var disqus_url = "http://{{ request.get_host }}{{ entry.get_url }}"
-        var disqus_title = "{{ entry.title }} @ {% get_from_settings 'PROJECT_NAME' %}"
+        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}";
+        var disqus_developer = "{% get_from_settings 'DEBUG' %}" == "True" ? 1 : 0;
+        var disqus_identifier = "{{ entry.id }}";
+        var disqus_url = "http://{{ request.get_host }}{{ entry.get_url }}";
+        var disqus_title = "{{ entry.title }} @ {% get_from_settings 'PROJECT_NAME' %}";
     </script>
 
     <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/embed.js"></script>

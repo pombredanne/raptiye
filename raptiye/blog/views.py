@@ -70,6 +70,10 @@ def get_entries_for_day(request, year, month, day, template_name="entries_for_da
     return archive_day(request, **params)
 
 
+def get_entries_for_month(request, year, month, template_name="entries_for_day.html"):
+
+
+
 def show_post(request, year, month, day, slug, template_name="detail.html"):
     params = {
         "year": year,

@@ -26,10 +26,11 @@ urlpatterns = patterns('raptiye.blog.views',
     url(r'^$', 'blog', name='index'),
 
     # archives for blogs..
+    url(r'^(?P<year>\d{4})/$', 'get_entries_for_year', name='entries_in_year'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'get_entries_for_month', name='entries_on_month'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', 'get_entries_for_day', name='entries_on_date'),
     # an entry on a specific date
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>[\w\d-]+)/$', 'show_post', name='show_post'),
-    # TODO: monthly view needed!
 
     # feeds
     (r'^feeds/latest/$', RSSLatestEntries()),

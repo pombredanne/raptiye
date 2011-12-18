@@ -1,3 +1,21 @@
+{% comment %}
+    raptiye
+    Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
 {% load blog_tags %}
 
 {% block js %}
@@ -15,8 +33,6 @@
 
 Paylaş:
 
-<a href="http://twitter.com/home/?status={{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %} (http://{{ request.get_host }}{{ entry.get_url }})" title="Bu yazıyı Twitter'da paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_twitter.png"></a>
-
+<a class="share_on_social" href="http://twitter.com/home/?status={{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %} (http://{{ request.get_host }}{{ entry.get_url }})" title="Bu yazıyı Twitter'da paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_twitter.png"></a>
 <a class="share_on_social" href="http://friendfeed.com/share/bookmarklet/frame#title={{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %}&amp;url=http://{{ request.get_host }}{{ entry.get_url }}" title="Bu yazıyı FriendFeed'de paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_friendfeed.png"></a>
-
 <a class="share_on_social" href="http://www.facebook.com/sharer.php?u=http://{{ request.get_host }}{{ entry.get_url }}&amp;t={{ flatpage.title|urlencode|iriencode }}" title="Bu olayı Facebook'ta paylaşın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_facebook.png"></a>
