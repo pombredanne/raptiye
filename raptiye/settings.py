@@ -77,8 +77,6 @@ SERVER_EMAIL = ""
 
 LOCALE = "tr_TR.UTF-8"
 
-CSRF_COOKIE_DOMAIN = ".raptiye.org"
-
 DEFAULT_CHARSET = 'utf-8'
 DEFAULT_CONTENT_TYPE = 'text/html'
 FILE_CHARSET = 'utf-8'
@@ -137,6 +135,13 @@ STATICFILES_DIRS = (
     "%s/static" % DOCUMENT_ROOT,
 )
 
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
 
@@ -144,7 +149,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
@@ -156,32 +160,79 @@ ROOT_URLCONF = 'raptiye.urls'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
-    "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.request",
-    "django.core.context_processors.csrf"
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages"
 )
 
 TEMPLATE_DIRS = (
     "%s/templates/default" % DOCUMENT_ROOT,
 )
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader'
-)
-
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'tagging',
     'raptiye.blog',
     'raptiye.contrib.flatpages',
 )
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[%(levelname)s] [%(asctime)s] [%(pathname)s] [%(lineno)d] %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'class': 'django.utils.log.NullHandler'
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'default'
+        },
+        'rotate': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '%s/logs/campaign.log' % DOCUMENT_ROOT,
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'default',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'default'
+        }
+    },
+    'loggers': {
+        '': {  # default logger
+            'handlers': ['console', 'rotate'],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'django.request': {  # handles 4xx & 5xx
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False
+        },
+        'django.db.backends': {
+            'handlers': ['rotate'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    }
+}
+
+LOGGING_CONFIG = 'django.utils.log.dictConfig'
