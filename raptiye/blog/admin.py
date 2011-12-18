@@ -55,5 +55,6 @@ class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'url', 'window')
     list_filter = ('window',)
     search_fields = ['title', 'description']
+    save_on_top = True
 
 admin.site.register(Link, LinkAdmin)
