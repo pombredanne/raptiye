@@ -3,17 +3,17 @@
 {% comment %}
     raptiye
     Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-    
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
-    
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-    
+
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
@@ -31,25 +31,25 @@
                 <div class="align_left">
                     <h2 class="no_bottom_margin">Aradığınız Sayfa Bulunamadı (404)</h2>
                 </div>
-                
+
                 <div class="align_right">
-                    <img src="{{ STATIC_URL|default:'/media/' }}template/images/404.png">
+                    <img src="{{ STATIC_URL|default:'/static/' }}template/images/404.png">
                 </div>
-                
+
                 <div class="both_sides_cleared small">
                     <p>
-                        Aradığınız sayfalara ulaşılamıyor. {% get_from_settings 'PROJECT_NAME' %} dışındaki bir bağlantıdan 
-                        bu sayfaya ulaşmaya çalışıyorsanız lütfen bağlantıyı sağlayan siteyle iletişime 
-                        geçerek ya doğru bağlantıyı sağlamalarını ya da bağlantıyı sitelerinden 
+                        Aradığınız sayfalara ulaşılamıyor. {% get_from_settings 'PROJECT_NAME' %} dışındaki bir bağlantıdan
+                        bu sayfaya ulaşmaya çalışıyorsanız lütfen bağlantıyı sağlayan siteyle iletişime
+                        geçerek ya doğru bağlantıyı sağlamalarını ya da bağlantıyı sitelerinden
                         kaldırmalarını isteyiniz.
                     </p>
-                    
+
                     <p class="no_bottom_margin">
-                        Dilerseniz <a href="{% url index %}" class="ulink">ana sayfaya</a> gidebilir ya da sol taraftaki etiketlerden birini 
+                        Dilerseniz <a href="{% url index %}" class="ulink">ana sayfaya</a> gidebilir ya da sol taraftaki etiketlerden birini
                         seçerek gezintinize kaldığınız yerden devam edebilirsiniz.
                     </p>
                 </div>
-                
+
                 <div class="clear"></div>
             </div>
         </div>

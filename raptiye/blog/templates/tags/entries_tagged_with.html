@@ -48,7 +48,7 @@
 
                 <div class="tag_feed_rss_icon align_right">
                     <a href="{% url blog:rss_entries_tagged_with tag %}" title="{{ tag }} ile etiketlenmiş yazıları RSS ile takip etmek için tıklayın!">
-                        <img src="{{ STATIC_URL|default:'/media/' }}template/images/social/rss_sidebar.png">
+                        <img src="{{ STATIC_URL|default:'/static/' }}template/images/social/rss_sidebar.png">
                     </a>
                 </div>
 
@@ -101,7 +101,7 @@
                                 <div class="small inline">
                                     <a href="{% url admin:blog_entry_change entry.id %}"
                                         title="yazıyı düzenlemek için tıklayın." class="nolink">
-                                        <img src="{{ STATIC_URL|default:'/media/' }}template/images/edit.png">
+                                        <img src="{{ STATIC_URL|default:'/static/' }}template/images/edit.png">
                                     </a>
                                 </div>
                             {% endif %}

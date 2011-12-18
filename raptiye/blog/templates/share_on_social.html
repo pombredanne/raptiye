@@ -33,8 +33,6 @@
 
 Paylaş:
 
-<a class="share_on_social" href="http://twitter.com/home/?status={{ entry.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %} (http://{{ request.get_host }}{{ entry.get_url }})" title="Bu yazıyı Twitter'da paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/media/' }}template/images/social/share_on_twitter.png"></a>
-
-<a class="share_on_social" href="http://friendfeed.com/share/bookmarklet/frame#title={{ entry.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %}&amp;url=http://{{ request.get_host }}{{ entry.get_url }}" title="Bu yazıyı FriendFeed'de paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/media/' }}template/images/social/share_on_friendfeed.png"></a>
-
-<a class="share_on_social" href="http://www.facebook.com/sharer.php?u=http://{{ request.get_host }}{{ entry.get_url }}&amp;t={{ entry.title|urlencode|iriencode }}" title="Bu olayı Facebook'ta paylaşın." target="_blank"><img src="{{ STATIC_URL|default:'/media/' }}template/images/social/share_on_facebook.png"></a>
+<a class="share_on_social" href="http://twitter.com/home/?status={{ entry.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %} (http://{{ request.get_host }}{{ entry.get_url }})" title="Bu yazıyı Twitter'da paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_twitter.png"></a>
+<a class="share_on_social" href="http://friendfeed.com/share/bookmarklet/frame#title={{ entry.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %}&amp;url=http://{{ request.get_host }}{{ entry.get_url }}" title="Bu yazıyı FriendFeed'de paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_friendfeed.png"></a>
+<a class="share_on_social" href="http://www.facebook.com/sharer.php?u=http://{{ request.get_host }}{{ entry.get_url }}&amp;t={{ entry.title|urlencode|iriencode }}" title="Bu olayı Facebook'ta paylaşın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_facebook.png"></a>
