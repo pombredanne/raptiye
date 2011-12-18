@@ -46,10 +46,6 @@ input[type=text], input[type=password] {
     padding: 2px;
 }
 
-form {
-    margin-bottom: 20px;
-}
-
 button[type=submit] {
     font-weight: bold;
 }
@@ -83,17 +79,21 @@ button[type=submit] {
 
 #search_container {
     float: right;
-    margin-top: -2px;
+    background: url(/media/template/images/stripe.png);
+    padding: 2px 4px 2px 4px;
+    line-height: 0;
+    border: 0;
 }
 
 #search_container input {
     width: 100px;
     padding: 5px 5px 5px 25px;
     background: white url(/media/template/images/search.png) 5px no-repeat;
+    outline: 0;
 }
 
 #search_container input.extended {
-    width: 180px;
+    width: 200px;
 }
 
 #header, #content, #footer {
