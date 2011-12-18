@@ -1,28 +1,28 @@
 # coding: utf-8
-# 
+#
 # raptiye
 # Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-# 
 
 import calendar
 
 from django.core.urlresolvers import reverse
 
+
 class WebCalendar(calendar.LocaleHTMLCalendar):
-    def __init__(self, obj_list, queryField = "datetime", cssClass = "ulink", firstweekday = 0, locale = "tr_TR.UTF-8"):
+    def __init__(self, obj_list, queryField="datetime", cssClass="ulink", firstweekday=0, locale="tr_TR.UTF-8"):
         super(WebCalendar, self).__init__(firstweekday, locale)
         self.obj_list = obj_list
         self.queryField = queryField
@@ -37,7 +37,7 @@ class WebCalendar(calendar.LocaleHTMLCalendar):
 
         return self.obj_list.filter(**filters).exists()
 
-    def formatmonth(self, year, month, selectedDay = None):
+    def formatmonth(self, year, month, selectedDay=None):
         self.year = year
         self.month = month
         self.selectedDay = selectedDay
