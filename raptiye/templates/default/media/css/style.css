@@ -65,7 +65,7 @@ button[type=submit] {
 }
 
 #top_menu {
-    margin-bottom: 40px;
+    margin: 20px auto;
 }
 
 #top_menu li {
@@ -74,11 +74,26 @@ button[type=submit] {
     margin-right: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    color: white;
+}
+
+#top_menu li a {
+    color: white;
 }
 
 #search_container {
     float: right;
     margin-top: -2px;
+}
+
+#search_container input {
+    width: 100px;
+    padding: 5px 5px 5px 25px;
+    background: white url(/media/template/images/search.png) 5px no-repeat;
+}
+
+#search_container input.extended {
+    width: 180px;
 }
 
 #header, #content, #footer {

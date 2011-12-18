@@ -19,19 +19,6 @@
 {% load blog_filters %}
 {% load blog_tags %}
 
-<div class="sidebox_container vertical_first">
-    <div class="sidebox_content">
-        <div class="sidebox_content_title">
-            <img src="{{ STATIC_URL|default:'/media/' }}template/images/calendar.png">
-            <strong>takvim</strong>
-        </div>
-
-        <div class="sidebox_content_body">
-            {% webcal %}
-        </div>
-    </div>
-</div>
-
 {% include "tags/tag_cloud.html" %}
 
 <div class="sidebox_container">

@@ -34,7 +34,6 @@ DJANGO_DIR = os.path.abspath(os.path.dirname(django.__file__))
 # --- GENERIC SETTINGS ------------
 
 PROJECT_NAME = u"raptiye"
-VERSION = '2.2.2.1'
 PROJECT_SUBTITLE = u"Quis custodes ipsos custodiet?"
 
 COLORIZE_CODE = False
@@ -170,10 +169,8 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader'
-    )),
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
 INSTALLED_APPS = (

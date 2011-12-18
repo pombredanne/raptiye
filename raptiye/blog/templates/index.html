@@ -41,16 +41,20 @@
     {% get_flatpages %}
 
     <div class="container_16">
-        <div id="header_top"></div>
-
         <div id="header" class="grid_16 alpha omega">
             <div id="top_menu" class="grid_16 alpha omega">
                 <li class="first">
                     &raquo;
-                    <a href="{% url index %}">ana sayfa</a>
+                    <a href="https://github.com/tunix" target="_blank" title="github depom için tıklayın.">github</a>
                 </li>
+
+                <li>
+                    &raquo;
+                    <a href="http://zerply.com/tunix" target="_blank" title="özgeçmişim için tıklayın.">cv</a>
+                </li>
+
                 {% for link in flatpages %}
-                    <li{% if forloop.last %} class="last"{% endif %}>
+                    <li class="{% if forloop.last %}last{% endif %}">
                         &raquo;
                         <a href="{{ link.url }}">{{ link.title }}</a>
                     </li>
@@ -58,8 +62,7 @@
 
                 <div id="search_container">
                     <form action="{% url blog:search %}" method="get" accept-charset="utf-8">
-                        <input type="text" name="keywords">
-                        <button type="submit">ara</button>
+                        <input type="text" name="keywords" placeholder="Arama">
                     </form>
                 </div>
             </div>
@@ -75,22 +78,17 @@
             <div class="grid_8 omega">
                 <div id="social_icons_container">
                     <a href="{% get_from_settings 'RSS_URL' %}" title="raptiye'yi RSS üzerinden takip etmek için tıklayın!" id="rss_menu" class="social_icon"></a>
-
                     <a href="http://twitter.com/tunix/" title="twitter sayfam için tıklayın!" id="twitter_menu" class="social_icon" target="_blank"></a>
-
                     <a href="http://www.flickr.com/photos/tunix/" title="flickr sayfam için tıklayın!" id="flickr_menu" class="social_icon" target="_blank"></a>
-
                     <a href="http://www.facebook.com/alper.kanat/" title="facebook sayfam için tıklayın!" id="facebook_menu" class="social_icon" target="_blank"></a>
-
                     <a href="http://www.vimeo.com/tunix/" title="vimeo sayfam için tıklayın!" id="vimeo_menu" class="social_icon" target="_blank"></a>
-
                     <a href="http://tr.linkedin.com/in/tunix" title="linked.in sayfam için tıklayın!" id="linkedin_menu" class="social_icon" target="_blank"></a>
                 </div>
             </div>
         </div>
 
         <div id="content" class="grid_16 alpha omega">
-            <div class="grid_6 alpha">
+            <div class="grid_5 alpha">
                 {% include "sidebar.html" %}
             </div>
 
@@ -98,7 +96,7 @@
         </div>
 
         <div id="footer" class="grid_16 alpha omega text_center small">
-            raptiye {% get_from_settings "VERSION" %}, python ve django kullanılarak yazılmıştır.
+            raptiye, python ve django kullanılarak yazılmıştır.
             <br>
             Site genelindeki içerik <span class="bold underline">kaynak göstermek şartıyla</span> serbestçe kullanılabilir.
         </div>

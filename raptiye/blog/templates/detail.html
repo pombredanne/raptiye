@@ -33,19 +33,19 @@
         var disqus_url = "http://{{ request.get_host }}{{ entry.get_url }}"
         var disqus_title = "{{ entry.title }} @ {% get_from_settings 'PROJECT_NAME' %}"
     </script>
-    
+
     <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/embed.js"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="grid_10 omega">
+    <div class="grid_11 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
                 <div class="blog_entry_title">
                     <h2 class="no_bottom_margin">
                         {{ entry.title }}
                     </h2>
-                    
+
                     <div class="smallplus">
                         {% include "tags/tags_of_entry.html" %}
                     </div>
@@ -59,13 +59,13 @@
                     <div class="align_left small">
                         {{ entry.datetime }}
                     </div>
-                    
+
                     <div class="align_right small">
                         {% include "share_on_social.html" %}
-                        
+
                         {% if user.is_superuser %}
                             |
-                            
+
                             <div class="small inline">
                                 <a href="{% url admin:blog_entry_change entry.id %}"
                                     title="yazıyı düzenlemek için tıklayın." class="nolink">
@@ -74,14 +74,14 @@
                             </div>
                         {% endif %}
                     </div>
-                    
+
                     <div class="clear"></div>
                 </div>
-                
+
                 <div class="blog_entry_comments small">
                     <div id="disqus_thread"></div>
                 </div>
-                
+
                 <div class="clear"></div>
             </div>
         </div>
