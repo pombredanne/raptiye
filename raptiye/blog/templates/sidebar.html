@@ -21,29 +21,6 @@
 
 {% include "tags/tag_cloud.html" %}
 
-<div class="sidebox_container">
-    <div class="sidebox_content">
-        <div class="sidebox_content_title">
-            <img src="{{ STATIC_URL|default:'/media/' }}template/images/links.png">
-            <strong>bağlantılar</strong>
-        </div>
+{% links %}
 
-        <div class="sidebox_content_body list small">
-            {% links %}
-        </div>
-    </div>
-</div>
-
-<div class="sidebox_container">
-    <div class="sidebox_content">
-        <div class="sidebox_content_title">
-            <img src="{{ STATIC_URL|default:'/media/' }}template/images/contact.png">
-            <strong>iletişim</strong>
-        </div>
-
-        <div class="sidebox_content_body list small">
-            {% include "contact.html" %}
-        </div>
-    </div>
-</div>
-
+{% include "contact.html" %}

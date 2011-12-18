@@ -16,9 +16,21 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% for link in links %}
-    <li>
-        &raquo;
-        <a href="{{ link.url }}" title="{{ link.description }}"{% if link.window %} target="_blank"{% endif %}>{{ link.title }}</a>
-    </li>
-{% endfor %}
+<div class="sidebox_container">
+    <div class="sidebox_content">
+        <div class="sidebox_content_title">
+            <img src="{{ STATIC_URL|default:'/media/' }}template/images/links.png">
+            <strong>bağlantılar</strong>
+        </div>
+
+        <div class="sidebox_content_body list small">
+            {% for link in links %}
+                <li>
+                    &raquo;
+                    <a href="{{ link.url }}" title="{{ link.description }}"{% if link.window %}
+                        target="_blank"{% endif %}>{{ link.title }}</a>
+                </li>
+            {% endfor %}
+        </div>
+    </div>
+</div>

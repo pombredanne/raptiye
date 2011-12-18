@@ -18,10 +18,22 @@
 
 {% load blog_tags %}
 
-<li>&raquo; <strong>E-Posta:</strong> tunix@raptiye.org</li>
-<li>&raquo; <strong>Jabber:</strong> tunix@raptiye.org</li>
-<li>&raquo; <strong>İsim:</strong> Alper Kanat</li>
-<li>&raquo; <strong>Yaş:</strong> {% calculate_age %}</li>
-<li>&raquo; <strong>Yaşadığı Yer:</strong> İstanbul, Türkiye</li>
-<li>&raquo; <strong>Meslek:</strong> Yazılım Geliştirici</li>
-<li>&raquo; <strong>Şirket:</strong> <a href="http://www.generation.com.tr" target="_blank" class="ulink">generation M</a></li>
+<div class="sidebox_container">
+    <div class="sidebox_content">
+        <div class="sidebox_content_title">
+            <img src="{{ STATIC_URL|default:'/media/' }}template/images/contact.png">
+            <strong>iletişim</strong>
+        </div>
+
+        <div class="sidebox_content_body list small">
+            <li>&raquo; <strong>E-Posta:</strong> tunix@raptiye.org</li>
+            <li>&raquo; <strong>Jabber:</strong> tunix@raptiye.org</li>
+            <li>&raquo; <strong>İsim:</strong> Alper Kanat</li>
+            <li>&raquo; <strong>Yaş:</strong> {% calculate_age %}</li>
+            <li>&raquo; <strong>Yaşadığı Yer:</strong> İstanbul, Türkiye</li>
+            <li>&raquo; <strong>Meslek:</strong> Yazılım Geliştirici</li>
+            <li>&raquo; <strong>Şirket:</strong> <a href="http://www.generation.com.tr"
+                target="_blank" class="ulink">generation M</a></li>
+        </div>
+    </div>
+</div>
