@@ -1,24 +1,25 @@
 # coding: utf-8
-# 
+#
 # raptiye
 # Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 
 from datetime import date
-import os, sys
+import os
+import sys
 
 try:
     import django
@@ -28,7 +29,6 @@ except ImportError:
 
 DOCUMENT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DJANGO_DIR = os.path.abspath(os.path.dirname(django.__file__))
-
 
 
 # --- GENERIC SETTINGS ------------
@@ -47,11 +47,9 @@ RSS_URL = ""
 BIRTH_DATE = date(1984, 05, 16)
 
 
-
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 20
-
 
 
 # --- COMMENT SETTINGS ------------
@@ -59,12 +57,10 @@ ADMIN_LIST_PER_PAGE = 20
 DISQUS_SHORTNAME = PROJECT_NAME
 
 
-
 # --- TAG SETTINGS ----------------
 
 FORCE_LOWERCASE_TAGS = True
 MAX_TAG_LENGTH = 50
-
 
 
 # --- OTHER SETTINGS --------------
@@ -75,7 +71,7 @@ EMAIL_HOST_PASSWORD = ""
 EMAIL_HOST_USER = ""
 EMAIL_INFO_ADDRESS_TR = ""
 EMAIL_INFO_ADDRESS_EN = ""
-# EMAIL_PORT = 
+# EMAIL_PORT =
 EMAIL_SUBJECT_PREFIX = u""
 EMAIL_USE_TLS = True
 SERVER_EMAIL = ""
@@ -84,7 +80,7 @@ LOCALE = "tr_TR.UTF-8"
 
 CSRF_COOKIE_DOMAIN = ".raptiye.org"
 
-DEFAULT_CHARSET='utf-8'
+DEFAULT_CHARSET = 'utf-8'
 DEFAULT_CONTENT_TYPE = 'text/html'
 FILE_CHARSET = 'utf-8'
 
@@ -106,7 +102,6 @@ DATETIME_INPUT_FORMATS = (
     '%d.%m.%Y', '%d/%m/%Y', '%d/%m/%Y %H:%M',
     '%d.%m.%Y %H:%M', '%d.%m.%Y %H:%M:%S', '%d/%m/%Y %H:%M:%S',
 )
-
 
 
 # --- STANDARD DJANGO SETTINGS ----
@@ -192,4 +187,3 @@ INSTALLED_APPS = (
     'raptiye.blog',
     'raptiye.contrib.flatpages',
 )
-
