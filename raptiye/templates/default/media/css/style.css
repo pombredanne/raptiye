@@ -79,7 +79,7 @@ button[type=submit] {
 
 #search_container {
     float: right;
-    background: url(/media/template/images/stripe.png);
+    background: url(/static/template/images/stripe.png);
     padding: 2px 4px 2px 4px;
     line-height: 0;
     border: 0;
@@ -88,7 +88,7 @@ button[type=submit] {
 #search_container input {
     width: 100px;
     padding: 5px 5px 5px 25px;
-    background: white url(/media/template/images/search.png) 5px no-repeat;
+    background: white url(/static/template/images/search.png) 5px no-repeat;
     outline: 0;
 }
 
@@ -117,37 +117,37 @@ button[type=submit] {
 }
 
 #rss_menu {
-    background: transparent url(/media/template/images/social/rss_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/rss_menu.png) bottom left no-repeat;
 }
 
 #twitter_menu {
-    background: transparent url(/media/template/images/social/twitter_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/twitter_menu.png) bottom left no-repeat;
 }
 
 #flickr_menu {
-    background: transparent url(/media/template/images/social/flickr_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/flickr_menu.png) bottom left no-repeat;
 }
 
 #facebook_menu {
-    background: transparent url(/media/template/images/social/facebook_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/facebook_menu.png) bottom left no-repeat;
 }
 
 #vimeo_menu {
-    background: transparent url(/media/template/images/social/vimeo_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/vimeo_menu.png) bottom left no-repeat;
 }
 
 #youtube_menu {
-    background: transparent url(/media/template/images/social/youtube_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/youtube_menu.png) bottom left no-repeat;
 }
 
 #linkedin_menu {
-    background: transparent url(/media/template/images/social/linkedin_menu.png) bottom left no-repeat;
+    background: transparent url(/static/template/images/social/linkedin_menu.png) bottom left no-repeat;
 }
 
 .sidebox_container {
     margin-bottom: 30px;
     padding: 5px;
-    background: transparent url(/media/template/images/stripe.png) top left repeat;
+    background: transparent url(/static/template/images/stripe.png) top left repeat;
     border: 1px solid black;
 }
 
@@ -197,7 +197,7 @@ button[type=submit] {
 .blog_entry_container {
     margin-bottom: 30px;
     padding: 5px;
-    background: transparent url(/media/template/images/stripe.png) top left repeat;
+    background: transparent url(/static/template/images/stripe.png) top left repeat;
     border: 1px solid black;
 }
 

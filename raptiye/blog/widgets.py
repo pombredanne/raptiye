@@ -26,55 +26,7 @@ from tagging.models import Tag
 from raptiye.blog.models import Entry
 
 
-__all__ = ("CKEditorInput", "MarkItUpInput", "AutoCompleteTagInput")
-
-
-class CKEditorInput(forms.Textarea):
-    def __init__(self, *args, **kwargs):
-        super(CKEditorInput, self).__init__(*args, **kwargs)
-
-    class Media:
-        css = {
-            "screen": (
-                "js/ckeditor/raptiye_ckeditor.css",
-            )
-        }
-
-        js = (
-            "js/ckeditor/ckeditor.js",
-            "js/ckeditor/config.js",
-        )
-
-    def render(self, name, value, attrs=None):
-        output = super(CKEditorInput, self).render(name, value, attrs)
-        return output + mark_safe(u'''<script type="text/javascript" charset="utf-8">
-            CKEDITOR.replace("id_%s")
-        </script>''' % name)
-
-
-class MarkItUpInput(forms.Textarea):
-    def __init__(self, *args, **kwargs):
-        super(MarkItUpInput, self).__init__(*args, **kwargs)
-
-    class Media:
-        css = {
-            "screen": (
-                "css/markitup/skins/default/style.css",
-                "css/markitup/sets/default/style.css",
-            )
-        }
-
-        js = (
-            "template/js/jquery.js",
-            "js/markitup/jquery.markitup.pack.js",
-            "js/markitup/sets/default/set.js",
-        )
-
-    def render(self, name, value, attrs=None):
-        output = super(MarkItUpInput, self).render(name, value, attrs)
-        return output + mark_safe(u'''<script type="text/javascript" charset="utf-8">
-            $("#id_%s").markItUp(mySettings)
-        </script>''' % name)
+__all__ = ("AutoCompleteTagInput", )
 
 
 class AutoCompleteTagInput(forms.TextInput):
