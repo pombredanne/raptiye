@@ -1,19 +1,19 @@
 # raptiye
 # Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 
 import json
 
@@ -25,7 +25,9 @@ from tagging.models import Tag
 
 from raptiye.blog.models import Entry
 
+
 __all__ = ("CKEditorInput", "MarkItUpInput", "AutoCompleteTagInput")
+
 
 class CKEditorInput(forms.Textarea):
     def __init__(self, *args, **kwargs):
@@ -48,6 +50,7 @@ class CKEditorInput(forms.Textarea):
         return output + mark_safe(u'''<script type="text/javascript" charset="utf-8">
             CKEDITOR.replace("id_%s")
         </script>''' % name)
+
 
 class MarkItUpInput(forms.Textarea):
     def __init__(self, *args, **kwargs):
@@ -73,9 +76,10 @@ class MarkItUpInput(forms.Textarea):
             $("#id_%s").markItUp(mySettings)
         </script>''' % name)
 
+
 class AutoCompleteTagInput(forms.TextInput):
     def __init__(self, *args, **kwargs):
-        if kwargs.has_key("model"):
+        if "model" in kwargs:
             self.model = kwargs.get("model", Entry)
             del(kwargs["model"])
 
