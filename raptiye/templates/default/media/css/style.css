@@ -125,6 +125,10 @@ button[type=submit] {
     background: transparent url(/media/template/images/social/youtube_menu.png) bottom left no-repeat;
 }
 
+#linkedin_menu {
+    background: transparent url(/media/template/images/social/linkedin_menu.png) bottom left no-repeat;
+}
+
 .sidebox_container {
     margin-bottom: 30px;
     padding: 5px;
