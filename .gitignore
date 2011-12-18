@@ -4,8 +4,10 @@
 */media/files/
 */media/images/resimler/
 */media/images/upload/
-*tmproj
+*.tmproj
 local_settings*.py
 ._*
 .DS_Store
-
+*.log
+*.log.*
+*/templates/cakmaavukat/
