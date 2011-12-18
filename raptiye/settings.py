@@ -81,8 +81,6 @@ DEFAULT_CHARSET = 'utf-8'
 DEFAULT_CONTENT_TYPE = 'text/html'
 FILE_CHARSET = 'utf-8'
 
-INTERNAL_IPS = ()
-
 DATE_FORMAT = "d.m.Y"
 DATE_INPUT_FORMATS = (
     '%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%b %d %Y',
