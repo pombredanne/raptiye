@@ -48,7 +48,7 @@ BIRTH_DATE = date(1984, 05, 16)
 
 # --- ADMIN SETTINGS --------------
 
-ADMIN_LIST_PER_PAGE = 20
+ADMIN_LIST_PER_PAGE = 100
 
 
 # --- COMMENT SETTINGS ------------
@@ -129,11 +129,12 @@ SITE_ID = 1
 
 USE_I18N = True
 
-MEDIA_ROOT = '%s/media/images/upload/' % DOCUMENT_ROOT
-MEDIA_URL = '/media/images/upload/'
-STATIC_URL = '/media/'
+MEDIA_ROOT = ''  # fill with absolute path
+MEDIA_URL = '/static/upload/'
+STATIC_URL = '/static/'
+STATIC_ROOT = ''
 STATICFILES_DIRS = (
-    "%s/media" % DOCUMENT_ROOT,
+    "%s/static" % DOCUMENT_ROOT,
 )
 
 # Make this unique, and don't share it with anybody.
