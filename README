@@ -9,8 +9,6 @@ REQUIREMENTS
 * django (>= 1.1)
 * django-tagging
 * python-imaging
-* django-registration (optional)
-* django-profiles (optional)
 * python-*sql (required when using a db backend other than sqlite)
 * BeautifulSoup (optional when using colorizing)
 
