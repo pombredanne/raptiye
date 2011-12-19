@@ -1,0 +1,120 @@
+{% extends "index.html" %}
+
+{% comment %}
+    raptiye
+    Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load blog_filters %}
+{% load blog_tags %}
+
+{% block title %}{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" charset="utf-8">
+        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}";
+        var disqus_developer = "{% get_from_settings 'DEBUG' %}" == "True" ? 1 : 0;
+    </script>
+
+    <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/count.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="grid_11 omega">
+        <div class="blog_entry_container vertical_first">
+            <div class="blog_entry">
+                <h2 class="smaller">
+                    {% block archive_navigation_text %}{% endblock %}
+                </h2>
+
+                <div class="no_bottom_margin">
+                    {% block navigation %}{% endblock %}
+                </div>
+
+                <div class="both_sides_cleared"></div>
+            </div>
+        </div>
+
+        {% for entry in entries %}
+            <div class="blog_entry_container{% if forloop.last %} vertical_last{% endif %}">
+                <div class="blog_entry">
+                    <div class="blog_entry_title">
+                        <h2 class="no_bottom_margin">
+                            <a href="{{ entry.get_url }}"
+                                title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
+                        </h2>
+
+                        <div class="smallplus">
+                            {% include "tags/tags_of_entry.html" %}
+                        </div>
+                    </div>
+
+                    <div class="blog_entry_content blog_text">
+                        {{ entry.content|emotions|safe|truncatewords_html:150 }}
+                    </div>
+
+                    {% if entry.content|exceeds_limit %}
+                        <div class="blog_entry_more blog_text">
+                            &raquo;
+                            <a href="{{ entry.get_url }}"
+                                class="ulink">Devamını okumak için tıklayın..</a>
+                            &laquo;
+                        </div>
+                    {% endif %}
+
+                    <div class="blog_entry_footer">
+                        <div class="align_left small">
+                            {{ entry.datetime }}
+                        </div>
+
+                        <div class="align_right small">
+                            <a href="{{ entry.get_url }}#disqus_thread" data-disqus-identifier="{{ entry.id }}"></a>
+
+                            |
+
+                            {% include "share_on_social.html" %}
+
+                            {% if user.is_superuser %}
+                                |
+
+                                <div class="small inline">
+                                    <a href="{% url admin:blog_entry_change entry.id %}"
+                                        title="yazıyı düzenlemek için tıklayın." class="nolink">
+                                        <img src="{{ STATIC_URL|default:'/static/' }}template/images/edit.png">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="blog_entry_container">
+                <div class="blog_entry">
+                    <img src="{{ STATIC_URL|default:'/static/' }}template/images/404.png" class="align_right">
+
+                    <h2>Hiç Yazı Bulunamadı</h2>
+
+                    <span class="small">
+                        {% block not_found_text %}{% endblock %}
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

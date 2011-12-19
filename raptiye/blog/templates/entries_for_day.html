@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "archive.html" %}
 
 {% comment %}
     raptiye
@@ -18,119 +18,37 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
-{% load blog_filters %}
 {% load blog_tags %}
 
 {% block title %}
-    {{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
+    {{ day|date:"d.m.Y, l" }} tarihinde yayınlanmış yazılar @ gunluk.{% get_from_settings "PROJECT_NAME" %} |
+    {% get_from_settings "PROJECT_SUBTITLE" %}
 {% endblock %}
 
-{% block js %}
-    <script type="text/javascript" charset="utf-8">
-        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}";
-        var disqus_developer = "{% get_from_settings 'DEBUG' %}" == "True" ? 1 : 0;
-    </script>
-
-    <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/count.js"></script>
+{% block archive_navigation_text %}
+    {{ day|date:"d.m.Y, l" }} Tarihinde Yayınlanmış Yazılar
 {% endblock %}
 
-{% block content %}
-    <div class="grid_11 omega">
-        <div class="blog_entry_container vertical_first">
-            <div class="blog_entry">
-                <h2 class="smaller">
-                    {{ day|date:"d.m.Y, l" }} Tarihinde Yayınlanmış Yazılar
-                </h2>
-
-                <div class="no_bottom_margin">
-                    {% if previous_day %}
-                        <div class="align_left smallplus">
-                            {% with previous_day as pd %}
-                                &laquo; <a href="{% url blog:entries_on_date pd.year, pd.month, pd.day %}">Önceki Gün</a>
-                            {% endwith %}
-                        </div>
-                    {% endif %}
-
-                    {% if next_day %}
-                        <div class="align_right smallplus">
-                            {% with next_day as nd %}
-                                <a href="{% url blog:entries_on_date nd.year, nd.month, nd.day %}">Sonraki Gün</a> &raquo;
-                            {% endwith %}
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="both_sides_cleared"></div>
-            </div>
+{% block navigation %}
+    {% if previous_day %}
+        <div class="align_left smallplus">
+            {% with previous_day as pd %}
+                &laquo; <a href="{% url blog:entries_on_date pd.year, pd.month, pd.day %}">Önceki Gün</a>
+            {% endwith %}
         </div>
+    {% endif %}
 
-        {% for entry in entry_list %}
-            <div class="blog_entry_container{% if forloop.last %} vertical_last{% endif %}">
-                <div class="blog_entry">
-                    <div class="blog_entry_title">
-                        <h2 class="no_bottom_margin">
-                            <a href="{{ entry.get_url }}"
-                                title="Yazının tamamını okumak için buraya tıklayın.">{{ entry.title }}</a>
-                        </h2>
+    {% if next_day %}
+        <div class="align_right smallplus">
+            {% with next_day as nd %}
+                <a href="{% url blog:entries_on_date nd.year, nd.month, nd.day %}">Sonraki Gün</a> &raquo;
+            {% endwith %}
+        </div>
+    {% endif %}
+{% endblock %}
 
-                        <div class="smallplus">
-                            {% include "tags/tags_of_entry.html" %}
-                        </div>
-                    </div>
-
-                    <div class="blog_entry_content blog_text">
-                        {{ entry.content|emotions|safe|truncatewords_html:150 }}
-                    </div>
-
-                    {% if entry.content|exceeds_limit %}
-                        <div class="blog_entry_more blog_text">
-                            &raquo;
-                            <a href="{{ entry.get_url }}"
-                                class="ulink">Devamını okumak için tıklayın..</a>
-                            &laquo;
-                        </div>
-                    {% endif %}
-
-                    <div class="blog_entry_footer">
-                        <div class="align_left small">
-                            {{ entry.datetime }}
-                        </div>
-
-                        <div class="align_right small">
-                            <a href="{{ entry.get_url }}#disqus_thread" data-disqus-identifier="{{ entry.id }}"></a>
-
-                            |
-
-                            {% include "share_on_social.html" %}
-
-                            {% if user.is_superuser %}
-                                |
-
-                                <div class="small inline">
-                                    <a href="{% url admin:blog_entry_change entry.id %}"
-                                        title="yazıyı düzenlemek için tıklayın." class="nolink">
-                                        <img src="{{ STATIC_URL|default:'/static/' }}template/images/edit.png">
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="clear"></div>
-                </div>
-            </div>
-        {% empty %}
-            <div class="blog_entry_container">
-                <div class="blog_entry">
-                    <img src="{{ STATIC_URL|default:'/static/' }}template/images/404.png" class="align_right">
-
-                    <h2>Hiç Yazı Bulunamadı</h2>
-
-                    <span class="small">
-                        <strong><em>{{ day|date:"d.m.Y, l" }}</em></strong> tarihinde hiç yazı yazılmamış. Dilerseniz önceki ve sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana sayfaya yönlenebilirsiniz.
-                    </span>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+{% block not_found_text %}
+    <strong><em>{{ day|date:"d.m.Y, l" }}</em></strong> tarihinde hiç yazı yazılmamış. Dilerseniz önceki ve
+    sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana
+    sayfaya yönlenebilirsiniz.
 {% endblock %}
