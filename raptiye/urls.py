@@ -25,12 +25,12 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'raptiye.blog.views.index', name="index"),
 
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/', include(admin.site.urls)),
     url(r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog'))
 )
 
 if is_app_installed('rosetta'):
     urlpatterns += patterns('',
-        url(r'^rosetta/', include('rosetta.urls')),
+        (r'^rosetta/', include('rosetta.urls')),
     )
