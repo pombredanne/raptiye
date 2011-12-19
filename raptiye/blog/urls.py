@@ -15,22 +15,46 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
 
-from django.conf.urls.defaults import *
+from django.conf import settings
+from django.conf.urls import patterns, url
+from django.views.generic.dates import DayArchiveView, DateDetailView
+from django.views.generic.list import ListView
 
 from raptiye.blog.feeds import *
+from raptiye.blog.functions import get_latest_entries
 
 urlpatterns = patterns('raptiye.blog.views',
     # main page of blog
-    url(r'^$', 'blog', name='index'),
+    url(r'^$', ListView.as_view(**{
+        'queryset': get_latest_entries(),
+        'template_name': 'homepage.html',
+        'paginate_by': settings.ENTRIES_PER_PAGE,
+        'context_object_name': 'entries'
+    }), name='index'),
 
     # archives for blogs..
-    url(r'^(?P<year>\d{4})/$', 'get_entries_for_year', name='entries_in_year'),
-    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'get_entries_for_month', name='entries_on_month'),
-    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', 'get_entries_for_day', name='entries_on_date'),
+    # url(r'^(?P<year>\d{4})/$', 'get_entries_for_year', name='entries_in_year'),
+    # url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'get_entries_for_month', name='entries_on_month'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', DayArchiveView.as_view(**{
+        'queryset': get_latest_entries(),
+        'date_field': 'datetime',
+        'month_format': '%m',
+        'allow_empty': True,
+        'context_object_name': "entries",
+        'allow_future': False,
+        'paginate_by': settings.ENTRIES_PER_PAGE,
+        'template_name': 'entries_for_day.html',
+    }), name='entries_on_date'),
     # an entry on a specific date
-    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>[\w\d-]+)/$', 'show_post', name='show_post'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>[\w\d-]+)/$', DateDetailView.as_view(**{
+        'queryset': get_latest_entries(),
+        'date_field': 'datetime',
+        'month_format': '%m',
+        'context_object_name': "entry",
+        'allow_future': True,
+        'template_name': 'detail.html'
+    }), name='show_post'),
 
     # feeds
     (r'^feeds/latest/$', RSSLatestEntries()),

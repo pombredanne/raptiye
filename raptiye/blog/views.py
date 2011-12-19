@@ -18,10 +18,7 @@
 #
 
 from django.conf import settings
-from django.http import Http404
-from django.shortcuts import render_to_response, redirect
-from django.template import RequestContext
-from django.views.generic.date_based import object_detail, archive_day
+from django.shortcuts import redirect
 from django.views.generic.list_detail import object_list
 
 from tagging.views import tagged_object_list
@@ -33,62 +30,6 @@ from raptiye.blog.functions import *
 
 def index(request):
     return redirect("blog:index", permanent=True)
-
-
-def show_preview(request, template_name="preview.html"):
-    if request.is_ajax():
-        return render_to_response(template_name, context_instance=RequestContext(request))
-    raise Http404
-
-
-def blog(request, template_name="homepage.html"):
-    params = {
-        "queryset": get_latest_entries(),
-        "template_name": template_name,
-        "paginate_by": settings.ENTRIES_PER_PAGE,
-        "page": request.GET.get("page", 1),
-        "template_object_name": "entry",
-    }
-
-    return object_list(request, **params)
-
-
-def get_entries_for_day(request, year, month, day, template_name="entries_for_day.html"):
-    params = {
-        "year": year,
-        "month": month,
-        "day": day,
-        "queryset": get_latest_entries(),
-        "date_field": "datetime",
-        "month_format": "%m",
-        "template_name": template_name,
-        "allow_empty": True,
-        "template_object_name": "entry",
-        "allow_future": False
-    }
-
-    return archive_day(request, **params)
-
-
-def get_entries_for_month(request, year, month, template_name="entries_for_day.html"):
-
-
-
-def show_post(request, year, month, day, slug, template_name="detail.html"):
-    params = {
-        "year": year,
-        "month": month,
-        "day": day,
-        "queryset": get_latest_entries(),
-        "date_field": "datetime",
-        "slug": slug,
-        "month_format": "%m",
-        "template_name": template_name,
-        "template_object_name": "entry",
-        "allow_future": True
-    }
-
-    return object_detail(request, **params)
 
 
 def search(request, template_name="search.html"):

@@ -35,10 +35,10 @@
 {% endblock %}
 
 {% block content %}
-    {% regroup entry_list|dictsortreversed:"sticky" by sticky as ordered_event_list %}
+    {% regroup entries|dictsortreversed:"sticky" by sticky as ordered_events %}
 
     <div class="grid_11 omega">
-        {% for group in ordered_event_list %}
+        {% for group in ordered_events %}
             {% for entry in group.list|dictsortreversed:"datetime" %}
                 <div class="blog_entry_container{% if forloop.first %} vertical_first{% endif %}{% if forloop.last and not entry.sticky %} vertical_last{% endif %}">
                     <div class="blog_entry">
@@ -103,7 +103,7 @@
         {% endfor %}
 
         <div id="pagination">
-            {% if is_paginated %}{% paginator 4 %}{% endif %}
+            {% if is_paginated %}{% paginator 5 %}{% endif %}
         </div>
     </div>
 {% endblock %}

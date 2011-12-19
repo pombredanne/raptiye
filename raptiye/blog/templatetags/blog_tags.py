@@ -18,6 +18,7 @@
 #
 
 from datetime import date
+import logging
 
 from django import template
 from django.conf import settings
@@ -27,6 +28,17 @@ from raptiye.blog.functions import get_latest_entries
 from raptiye.blog.models import Link
 from raptiye.blog.webcal import WebCalendar
 
+
+__all__ = (
+    'calculate_age',
+    'webcal',
+    'paginator',
+    'links',
+    'get_from_settings'
+)
+
+
+log = logging.getLogger(__name__)
 register = template.Library()
 
 
@@ -73,23 +85,34 @@ def paginator(context, adjacent_pages=2):
 
     """
 
-    page_numbers = range(max(1, context['page'] - adjacent_pages), min(context['pages'], context['page'] + adjacent_pages) + 1)
-
+    paginator = context.get('paginator')
+    page = context.get('page_obj')
+    page_numbers = range(max(1, page.number - adjacent_pages), min(paginator.num_pages, page.number + adjacent_pages) + 1)
     params = context["request"].GET.copy()
+
+    log.debug('Page Number: %s', page.number)
+    log.debug('Number of Pages: %s', paginator.num_pages)
+    log.debug('Page Range: %s', paginator.page_range)
+    log.debug('Calculated Page Range: %s', page_numbers)
+    log.debug('Next Page: %s', page.next_page_number())
+    log.debug('Previous Page: %s', page.previous_page_number())
+    log.debug('Has Next Page: %s', page.has_next())
+    log.debug('Has Previous Page: %s', page.has_previous())
+    log.debug('Query String: %s', params.urlencode())
 
     if params.__contains__("page"):
         del(params["page"])
 
     return {
-        'page': context['page'],
-        'pages': context['pages'],
+        'page': page.number,
+        'pages': paginator.num_pages,
         'page_numbers': page_numbers,
-        'next': context['next'],
-        'previous': context['previous'],
-        'has_next': context['has_next'],
-        'has_previous': context['has_previous'],
+        'next': page.next_page_number(),
+        'previous': page.previous_page_number(),
+        'has_next': page.has_next(),
+        'has_previous': page.has_previous(),
         'show_first': 1 not in page_numbers,
-        'show_last': context['pages'] not in page_numbers,
+        'show_last': paginator.num_pages not in page_numbers,
         'query_string': params.urlencode(),
     }
 
