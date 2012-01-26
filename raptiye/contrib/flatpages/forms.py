@@ -25,7 +25,9 @@ from tagging.forms import TagField
 
 from raptiye.blog.models import Entry
 from raptiye.blog.widgets import *
-from raptiye.contrib.flatpages.models import FlatPage
+
+from models import FlatPage
+
 
 __all__ = ("FlatPageForm",)
 

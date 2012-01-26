@@ -2,6 +2,6 @@
 
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('raptiye.contrib.flatpages.views',
+urlpatterns = patterns('views',
     (r'^(?P<url>.*)$', 'flatpage'),
 )
