@@ -21,11 +21,13 @@ from django import forms
 
 from tagging.forms import TagField
 
-from raptiye.blog.models import Entry
-from raptiye.blog.widgets import *
+from models import Entry
+from widgets import *
 
 
-__all__ = ("EntryForm",)
+__all__ = (
+    "EntryForm",
+)
 
 
 class EntryForm(forms.ModelForm):

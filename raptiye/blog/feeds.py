@@ -24,10 +24,14 @@ from django.shortcuts import get_object_or_404
 
 from tagging.models import Tag, TaggedItem
 
-from raptiye.blog.functions import get_latest_entries
+from functions import get_latest_entries
 
 
-__all__ = ("RSS", "RSSLatestEntries", "RSSEntriesTaggedWith")
+__all__ = (
+    "RSS",
+    "RSSLatestEntries",
+    "RSSEntriesTaggedWith"
+)
 
 
 class RSS(Feed):

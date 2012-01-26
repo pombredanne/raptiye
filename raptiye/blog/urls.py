@@ -21,8 +21,8 @@ from django.conf.urls import patterns, url
 from django.views.generic.dates import DayArchiveView, DateDetailView
 from django.views.generic.list import ListView
 
-from raptiye.blog.feeds import *
-from raptiye.blog.functions import get_latest_entries
+from feeds import *
+from functions import get_latest_entries
 
 urlpatterns = patterns('raptiye.blog.views',
     # main page of blog

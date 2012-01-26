@@ -23,10 +23,14 @@ import operator
 from django.conf import settings
 from django.db.models import Q
 
-from raptiye.blog.models import Entry
+from models import Entry
 
 
-__all__ = ("is_app_installed", "get_latest_entries", "search_against_entries")
+__all__ = (
+    "is_app_installed",
+    "get_latest_entries",
+    "search_against_entries"
+)
 
 
 def is_app_installed(app):

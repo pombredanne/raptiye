@@ -21,8 +21,14 @@ from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from raptiye.blog.forms import EntryForm
-from raptiye.blog.models import *
+from forms import EntryForm
+from models import *
+
+
+__all__ = (
+    'EntryAdmin',
+    'LinkAdmin'
+)
 
 
 class EntryAdmin(admin.ModelAdmin):
@@ -48,8 +54,6 @@ class EntryAdmin(admin.ModelAdmin):
     save_on_top = True
     search_fields = ("title", "content")
 
-admin.site.register(Entry, EntryAdmin)
-
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'url', 'window')
@@ -57,4 +61,5 @@ class LinkAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description']
     save_on_top = True
 
+admin.site.register(Entry, EntryAdmin)
 admin.site.register(Link, LinkAdmin)

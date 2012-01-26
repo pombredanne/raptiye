@@ -23,7 +23,7 @@ from django.views.generic.list_detail import object_list
 
 from tagging.views import tagged_object_list
 
-from raptiye.blog.functions import *
+from functions import *
 
 
 # TODO: migrate the code to class based generic views, functionals are deprecated!

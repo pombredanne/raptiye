@@ -23,7 +23,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from tagging.models import Tag
 
-from raptiye.blog.models import Entry
+from models import Entry
 
 
 __all__ = ("AutoCompleteTagInput", )

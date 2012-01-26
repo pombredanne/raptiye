@@ -22,7 +22,16 @@ import HTMLParser
 from django import template
 from django.conf import settings
 
-from raptiye.blog.functions import is_app_installed
+from blog.functions import is_app_installed
+
+
+__all__ = (
+    'emotions',
+    'exceeds_limit',
+    'code_colorizer',
+    'is_installed'
+)
+
 
 register = template.Library()
 
