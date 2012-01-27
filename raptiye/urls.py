@@ -28,7 +28,9 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 
-    (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog'))
+    (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog')),
+
+    (r'^grappelli/', include('grappelli.urls')),
 )
 
 if is_app_installed('rosetta'):

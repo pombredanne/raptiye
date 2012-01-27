@@ -54,6 +54,12 @@ class EntryAdmin(admin.ModelAdmin):
     save_on_top = True
     search_fields = ("title", "content")
 
+    class Media:
+        js = [
+            '%s/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js' % settings.STATIC_URL,
+            '%s/js/tinymce_setup.js' % settings.STATIC_URL
+        ]
+
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'url', 'window')
