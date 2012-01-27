@@ -17,6 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
+from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,5 +45,11 @@ class FlatPageAdmin(admin.ModelAdmin):
     list_display = ('url', 'title', 'get_sites', 'tags', 'show_on_homepage')
     list_filter = ('sites', 'enable_comments', 'registration_required', 'show_on_homepage')
     search_fields = ('url', 'title')
+
+    class Media:
+        js = [
+            '%s/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js' % settings.STATIC_URL,
+            '%s/js/tinymce_setup.js' % settings.STATIC_URL
+        ]
 
 admin.site.register(FlatPage, FlatPageAdmin)
