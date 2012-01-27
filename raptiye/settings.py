@@ -124,6 +124,8 @@ LANGUAGE_CODE = 'tr'
 SITE_ID = 1
 
 USE_I18N = True
+USE_L10N = True
+USE_TZ = True
 
 MEDIA_ROOT = ''  # fill with absolute path
 MEDIA_URL = '/static/upload/'
@@ -133,8 +135,6 @@ STATICFILES_DIRS = (
     "%s/static" % DOCUMENT_ROOT,
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder'
@@ -147,6 +147,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
@@ -154,7 +155,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'raptiye.urls'
+
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'raptiye.wsgi.application'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
