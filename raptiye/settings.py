@@ -186,7 +186,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'tagging',
     'raptiye.blog',
-    'raptiye.contrib.flatpages'
+    'raptiye.contrib.flatpages',
+    'south'
 )
 
 LOGGING = {
