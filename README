@@ -8,14 +8,18 @@ REQUIREMENTS
 
 * django (>= 1.1)
 * django-tagging
+* django-grappelli
+* python2-feedparser [needed by grappelli dashboard]
 * python-imaging
 * python-*sql (required when using a db backend other than sqlite)
 * BeautifulSoup (optional when using colorizing)
+* python-south
 
 
 NOTES ON DEPLOYMENT
 -----------------------
 
-* /media/admin/ should be linked to django's admin media folder
-* you can overwrite any setting by creating settings in local_settings.py (you need to create it first)
-* /favicon.ico should be defined in web server configuration file as an alias to /media/images/favicon.png
+* you can overwrite any setting by creating settings in local_settings.py
+(you need to create it first)
+* /favicon.ico should be defined in web server configuration file as an alias
+to /static/images/favicon.png
