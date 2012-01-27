@@ -24,9 +24,9 @@ from django import template
 from django.conf import settings
 from django.utils.safestring import mark_safe
 
-from blog.functions import get_latest_entries
-from blog.models import Link
-from blog.webcal import WebCalendar
+from raptiye.blog.functions import get_latest_entries
+from raptiye.blog.models import Link
+from raptiye.blog.webcal import WebCalendar
 
 
 __all__ = (

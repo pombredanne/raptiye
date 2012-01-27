@@ -23,12 +23,12 @@ from blog.functions import is_app_installed
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'blog.views.index', name="index"),
+    url(r'^$', 'raptiye.blog.views.index', name="index"),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 
-    (r'^blog/', include('blog.urls', namespace='blog', app_name='blog'))
+    (r'^blog/', include('raptiye.blog.urls', namespace='blog', app_name='blog'))
 )
 
 if is_app_installed('rosetta'):

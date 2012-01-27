@@ -152,7 +152,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'contrib.flatpages.middleware.FlatpageFallbackMiddleware'
+    'raptiye.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
 ROOT_URLCONF = 'raptiye.urls'
@@ -185,8 +185,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tagging',
-    'blog',
-    'contrib.flatpages'
+    'raptiye.blog',
+    'raptiye.contrib.flatpages'
 )
 
 LOGGING = {

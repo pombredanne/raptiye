@@ -22,7 +22,7 @@ import HTMLParser
 from django import template
 from django.conf import settings
 
-from blog.functions import is_app_installed
+from raptiye.blog.functions import is_app_installed
 
 
 __all__ = (
