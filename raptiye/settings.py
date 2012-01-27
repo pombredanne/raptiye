@@ -207,7 +207,7 @@ LOGGING = {
         },
         'rotate': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '%s/logs/campaign.log' % DOCUMENT_ROOT,
+            'filename': '%s/logs/raptiye.log' % DOCUMENT_ROOT,
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
             'formatter': 'default',
