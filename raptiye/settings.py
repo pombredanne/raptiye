@@ -49,8 +49,6 @@ BIRTH_DATE = date(1984, 05, 16)
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 100
-GRAPPELLI_ADMIN_TITLE = PROJECT_NAME
-GRAPPELLI_INDEX_DASHBOARD = 'raptiye.dashboard.CustomIndexDashboard'
 
 
 # --- COMMENT SETTINGS ------------
@@ -136,7 +134,6 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = (
     "%s/static" % DOCUMENT_ROOT,
 )
-ADMIN_MEDIA_PREFIX = STATIC_URL + "grappelli/"  # for grappelli
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -179,8 +176,6 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'grappelli.dashboard',
-    'grappelli',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
