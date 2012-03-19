@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "index_no_sidebar.html" %}
 
 {% comment %}
     raptiye
@@ -38,7 +38,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid_11 omega">
+    <div class="grid_16 alpha omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
                 <div class="blog_entry_title">
@@ -64,8 +64,6 @@
                         {% include "share_on_social.html" %}
 
                         {% if user.is_superuser %}
-                            |
-
                             <div class="small inline">
                                 <a href="{% url admin:blog_entry_change entry.id %}"
                                     title="yazıyı düzenlemek için tıklayın." class="nolink">

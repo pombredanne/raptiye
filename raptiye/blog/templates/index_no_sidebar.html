@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% comment %}
+    raptiye
+    Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load blog_tags %}
+{% load flatpage_tags %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/text.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/960.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/colorbox.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}css/pygments.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/style.css" type="text/css" media="screen" charset="utf-8">
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/jquery.colorbox-min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/raptiye.js"></script>
+    {% block js %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {% get_flatpages %}
+
+    <div class="container_16">
+        <div id="header" class="grid_16 alpha omega">
+            <div id="top_menu" class="grid_16 alpha omega">
+                <li class="first">
+                    &raquo;
+                    <a href="https://github.com/tunix" target="_blank" title="github depom için tıklayın.">github</a>
+                </li>
+
+                <li>
+                    &raquo;
+                    <a href="http://zerply.com/tunix" target="_blank" title="özgeçmişim için tıklayın.">cv</a>
+                </li>
+
+                {% for link in flatpages %}
+                    <li class="{% if forloop.last %}last{% endif %}">
+                        &raquo;
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+
+                <div id="search_container">
+                    <form action="{% url blog:search %}" method="get" accept-charset="utf-8">
+                        <input type="text" name="keywords" placeholder="Arama">
+                    </form>
+                </div>
+            </div>
+
+            <div class="grid_8 alpha">
+                <div id="site_logo" class="grid_6 alpha">
+                    <a href="{% url index %}"><img src="{{ STATIC_URL|default:'/static/' }}template/images/site_logo.png"></a>
+                </div>
+
+                <div class="suffix_3 omega"></div>
+            </div>
+
+            <div class="grid_8 omega">
+                <div id="social_icons_container">
+                    <a href="{% get_from_settings 'RSS_URL' %}" title="raptiye'yi RSS üzerinden takip etmek için tıklayın!" id="rss_menu" class="social_icon"></a>
+                    <a href="http://twitter.com/tunix/" title="twitter sayfam için tıklayın!" id="twitter_menu" class="social_icon" target="_blank"></a>
+                    <a href="http://www.flickr.com/photos/tunix/" title="flickr sayfam için tıklayın!" id="flickr_menu" class="social_icon" target="_blank"></a>
+                    <a href="http://www.facebook.com/alper.kanat/" title="facebook sayfam için tıklayın!" id="facebook_menu" class="social_icon" target="_blank"></a>
+                    <a href="http://www.vimeo.com/tunix/" title="vimeo sayfam için tıklayın!" id="vimeo_menu" class="social_icon" target="_blank"></a>
+                    <a href="http://tr.linkedin.com/in/tunix" title="linked.in sayfam için tıklayın!" id="linkedin_menu" class="social_icon" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="grid_16 alpha omega">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div id="footer" class="grid_16 alpha omega text_center small">
+            raptiye, python ve django kullanılarak yazılmıştır.
+            <br>
+            Site genelindeki içerik <span class="bold underline">kaynak göstermek şartıyla</span> serbestçe kullanılabilir.
+        </div>
+    </div>
+{% endblock %}
