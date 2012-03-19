@@ -15,24 +15,3 @@
     You should have received a copy of the GNU General Public License
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
-
-{% load blog_tags %}
-
-{% block js %}
-    <script type="text/javascript" charset="utf-8">
-        $(function() {
-            $(".share_on_social").colorbox({
-                "iframe": true,
-                "width": "700px",
-                "height": "500px",
-                "title": " "
-            })
-        })
-    </script>
-{% endblock %}
-
-Paylaş:
-
-<a class="share_on_social" href="http://twitter.com/home/?status={{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %} (http://{{ request.get_host }}{{ entry.get_url }})" title="Bu yazıyı Twitter'da paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_twitter.png"></a>
-<a class="share_on_social" href="http://friendfeed.com/share/bookmarklet/frame#title={{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %}&amp;url=http://{{ request.get_host }}{{ entry.get_url }}" title="Bu yazıyı FriendFeed'de paylaşmak için tıklayın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_friendfeed.png"></a>
-<a class="share_on_social" href="http://www.facebook.com/sharer.php?u=http://{{ request.get_host }}{{ entry.get_url }}&amp;t={{ flatpage.title|urlencode|iriencode }}" title="Bu olayı Facebook'ta paylaşın." target="_blank"><img src="{{ STATIC_URL|default:'/static/' }}template/images/social/share_on_facebook.png"></a>
