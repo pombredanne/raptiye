@@ -6,14 +6,12 @@ django framework.
 REQUIREMENTS
 ----------------
 
-* django (>= 1.1)
+* django (>= 1.3)
 * django-tagging
-* django-grappelli
-* python2-feedparser [needed by grappelli dashboard]
 * python-imaging
-* python-*sql (required when using a db backend other than sqlite)
 * BeautifulSoup (optional when using colorizing)
 * python-south
+* django-markitup
 
 
 NOTES ON DEPLOYMENT

@@ -49,6 +49,9 @@ BIRTH_DATE = date(1984, 05, 16)
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 100
+MARKITUP_FILTER = ('markdown.markdown', {
+    'safe_mode': True
+})
 
 
 # --- COMMENT SETTINGS ------------
@@ -187,7 +190,8 @@ INSTALLED_APPS = (
     'tagging',
     'raptiye.blog',
     'raptiye.contrib.flatpages',
-    'south'
+    'south',
+    'markitup'
 )
 
 LOGGING = {
