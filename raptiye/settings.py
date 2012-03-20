@@ -129,7 +129,7 @@ LANGUAGE_CODE = 'tr'
 SITE_ID = 1
 
 USE_I18N = True
-USE_L10N = True
+USE_L10N = False
 USE_TZ = True
 
 MEDIA_ROOT = ''  # fill with absolute path
@@ -154,7 +154,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'raptiye.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
