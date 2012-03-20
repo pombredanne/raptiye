@@ -23,15 +23,6 @@
 
 {% block title %}{% endblock %}
 
-{% block js %}
-    <script type="text/javascript" charset="utf-8">
-        var disqus_shortname = "{% get_from_settings 'DISQUS_SHORTNAME' %}";
-        var disqus_developer = "{% get_from_settings 'DEBUG' %}" == "True" ? 1 : 0;
-    </script>
-
-    <script type="text/javascript" charset="utf-8" async="true" src="http://{% get_from_settings 'DISQUS_SHORTNAME' %}.disqus.com/count.js"></script>
-{% endblock %}
-
 {% block content %}
     <div class="grid_11 omega">
         <div class="blog_entry_container vertical_first">
@@ -82,22 +73,7 @@
                             </div>
 
                             <div class="align_right small">
-                                <a href="{{ entry.get_url }}#disqus_thread" data-disqus-identifier="{{ entry.id }}"></a>
-
-                                |
-
                                 {% include "share_on_social.html" %}
-
-                                {% if user.is_superuser %}
-                                    |
-
-                                    <div class="small inline">
-                                        <a href="{% url admin:blog_entry_change entry.id %}"
-                                            title="yazıyı düzenlemek için tıklayın." class="nolink">
-                                            <img src="{{ STATIC_URL|default:'/static/' }}template/images/edit.png">
-                                        </a>
-                                    </div>
-                                {% endif %}
                             </div>
                         </div>
 

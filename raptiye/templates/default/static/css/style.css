@@ -396,6 +396,20 @@ button[type=submit] {
     margin-bottom: 0 !important;
 }
 
+.vertical_top {
+    vertical-align: top;
+}
+
 .both_sides_cleared {
     clear: both;
 }
+
+/* FACEBOOK RELATED HACKS START */
+.fb_edge_widget_with_comment iframe {
+    width: 48px !important;
+}
+
+span.fb_edge_comment_widget.fb_iframe_widget iframe {
+    width: 401px !important;
+}
+/* FACEBOOK RELATED HACKS END */
