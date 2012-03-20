@@ -5,6 +5,7 @@ from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from markitup.fields import MarkupField
 from tagging.fields import TagField
 
 
@@ -14,7 +15,7 @@ __all__ = ("FlatPage",)
 class FlatPage(models.Model):
     url = models.CharField(_(u'URL'), max_length=100, db_index=True)
     title = models.CharField(_(u'Title'), max_length=200)
-    content = models.TextField(_(u'Content'), blank=True)
+    content = MarkupField(_(u'Content'), blank=True)
     # TODO: implement comments for flatpages
     enable_comments = models.BooleanField(_(u'Enable Comments'))
     registration_required = models.BooleanField(_(u'Registration required'),
