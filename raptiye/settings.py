@@ -49,9 +49,11 @@ BIRTH_DATE = date(1984, 05, 16)
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 100
+JQUERY_URL = 'template/js/jquery.js'
 MARKITUP_FILTER = ('markdown.markdown', {
-    'safe_mode': True
+    'safe_mode': False
 })
+MARKITUP_SET = 'markitup/sets/markdown'
 
 
 # --- COMMENT SETTINGS ------------

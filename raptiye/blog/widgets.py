@@ -45,7 +45,6 @@ class AutoCompleteTagInput(forms.TextInput):
         }
 
         js = (
-            "template/js/jquery.js",
             "js/jquery.autoSuggest-packed.js",
         )
 

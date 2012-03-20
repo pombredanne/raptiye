@@ -23,6 +23,7 @@ from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from markitup.fields import MarkupField
 from tagging.fields import TagField
 
 
@@ -41,7 +42,7 @@ class Entry(models.Model):
 
     title = models.CharField(_(u"Title"), help_text=_(u"Required"), max_length=80)
     datetime = models.DateTimeField(_(u"Publish On"), help_text=_(u"Required"))
-    content = models.TextField(_(u"Content"), help_text=_(u"Required.. HTML Allowed.."))
+    content = MarkupField(_(u"Content"), help_text=_(u"Required.. Use markdown.."))
     sticky = models.BooleanField(_(u"Sticky"), default=False)
     published = models.BooleanField(_(u"Published"), default=False)
     comments_enabled = models.BooleanField(_(u"Comments Enabled"), default=True)
