@@ -57,7 +57,7 @@ urlpatterns = patterns('raptiye.blog.views',
     }), name='show_post'),
 
     # feeds
-    (r'^feeds/latest/$', RSSLatestEntries()),
+    url(r'^feeds/latest/$', RSSLatestEntries(), name="rss_entries_latest"),
     url(r'^feeds/(?P<tag>[^/]+)/$', RSSEntriesTaggedWith(), name="rss_entries_tagged_with"),
 
     # search against entries
