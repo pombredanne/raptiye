@@ -12,6 +12,7 @@ REQUIREMENTS
 * BeautifulSoup (optional when using colorizing)
 * python-south
 * django-markitup
+* python2-markdown
 
 
 NOTES ON DEPLOYMENT
