@@ -18,6 +18,6 @@
 
 {% load blog_tags %}
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://{{ request.get_host }}{{ entry.get_url }}" data-text="{{ flatpage.title|urlencode|iriencode }} @ {% get_from_settings 'PROJECT_NAME' %}" data-via="tunix" data-count="none">Tweet</a>
-<div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://{{ request.get_host }}{{ entry.get_url }}"></div>
-<div class="fb-like vertical_top" data-href="http://{{ request.get_host }}{{ entry.get_url }}" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://{{ request.get_host }}{{ flatpage.url }}" data-text="{{ flatpage.title }}" data-via="tunix" data-count="none">Tweet</a>
+<div class="g-plusone" data-size="medium" data-annotation="none" data-href="http://{{ request.get_host }}{{ flatpage.url }}"></div>
+<div class="fb-like vertical_top" data-href="http://{{ request.get_host }}{{ flatpage.url }}" data-send="false" data-layout="button_count" data-show-faces="false"></div>
