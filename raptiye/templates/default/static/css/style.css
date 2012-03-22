@@ -412,4 +412,8 @@ button[type=submit] {
 span.fb_edge_comment_widget.fb_iframe_widget iframe {
     width: 401px !important;
 }
+
+.fb_comments_count {
+    vertical-align: top;
+}
 /* FACEBOOK RELATED HACKS END */

@@ -73,6 +73,11 @@
                             </div>
 
                             <div class="align_right small">
+                                <span class="vertical_top">
+                                    <a class="vertical_top" href="{{ entry.get_url }}#comments"><fb:comments-count
+                                        href=http://{{ request.get_host }}{{ entry.get_url }}></fb:comments-count> Yorum</a> | Paylaş:
+                                </span>
+
                                 {% include "share_on_social.html" %}
                             </div>
                         </div>
