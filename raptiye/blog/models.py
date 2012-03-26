@@ -17,7 +17,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
-from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
@@ -66,9 +65,10 @@ class Entry(models.Model):
 
     get_sites.short_description = _(u"Published At")
     get_sites.allow_tags = True
-
+    
+    @models.permalink
     def get_url(self):
-        return reverse("blog:show_post", args=[
+        return ("blog:show_post", [
             self.datetime.year,
             self.datetime.month,
             self.datetime.day,
