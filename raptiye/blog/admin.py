@@ -56,8 +56,7 @@ class EntryAdmin(admin.ModelAdmin):
 
 
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'url', 'window')
-    list_filter = ('window',)
+    list_display = ('title', 'description', 'url')
     search_fields = ['title', 'description']
     save_on_top = True
 

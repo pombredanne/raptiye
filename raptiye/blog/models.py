@@ -65,7 +65,7 @@ class Entry(models.Model):
 
     get_sites.short_description = _(u"Published At")
     get_sites.allow_tags = True
-    
+
     @models.permalink
     def get_url(self):
         return ("blog:show_post", [
@@ -88,7 +88,6 @@ class Link(models.Model):
     title = models.CharField(_(u"Title"), max_length="50")
     description = models.CharField(_(u"Description"), max_length="200", blank=True)
     url = models.URLField(_(u"URL"))
-    window = models.BooleanField(_(u"Open in new window"), default=False)
 
     def __unicode__(self):
         return self.title
