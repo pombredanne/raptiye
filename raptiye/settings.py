@@ -50,7 +50,7 @@ TEMPLATE_NAME = 'default'
 # --- ADMIN SETTINGS --------------
 
 ADMIN_LIST_PER_PAGE = 100
-JQUERY_URL = 'template/js/jquery.js'
+JQUERY_URL = 'js/jquery.js'
 MARKITUP_FILTER = ('markdown.markdown', {
     'safe_mode': False
 })
