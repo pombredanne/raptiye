@@ -44,6 +44,8 @@ RSS_LIMIT = 10
 
 BIRTH_DATE = date(1984, 05, 16)
 
+TEMPLATE_NAME = 'default'
+
 
 # --- ADMIN SETTINGS --------------
 

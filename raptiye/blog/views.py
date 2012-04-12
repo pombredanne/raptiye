@@ -40,7 +40,7 @@ def search(request, template_name="search.html"):
 
     params = {
         "queryset": result,
-        "template_name": template_name,
+        "template_name": '%s/%s' % (settings.TEMPLATE_NAME, template_name),
         "template_object_name": "entry",
         "paginate_by": settings.ENTRIES_PER_PAGE,
         "extra_context": {
@@ -55,7 +55,7 @@ def entries_tagged_with(request, tag, template_name="tags/entries_tagged_with.ht
     params = {
         "queryset_or_model": get_latest_entries(),
         "tag": tag,
-        "template_name": template_name,
+        "template_name": '%s/%s' % (settings.TEMPLATE_NAME, template_name),
         "paginate_by": settings.ENTRIES_PER_PAGE,
         "page": request.GET.get("page", 1),
         "template_object_name": "entry",

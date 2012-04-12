@@ -38,9 +38,9 @@ def flatpage(request, url, template_name="default.html"):
         return redirect_to_login(request.path)
 
     if f.template_name:
-        t = loader.select_template((f.template_name, template_name))
+        t = loader.select_template(('%s/%s' % (settings.TEMPLATE_NAME, f.template_name), '%s/%s' % (settings.TEMPLATE_NAME, template_name)))
     else:
-        t = loader.get_template(template_name)
+        t = loader.get_template('%s/%s' % (settings.TEMPLATE_NAME, template_name))
 
     # To avoid having to always use the "|safe" filter in flatpage templates,
     # mark the title and content as already safe (since they are raw HTML

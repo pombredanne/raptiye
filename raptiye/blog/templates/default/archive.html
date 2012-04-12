@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "default/index.html" %}
 
 {% comment %}
     raptiye
@@ -20,6 +20,7 @@
 
 {% load blog_filters %}
 {% load blog_tags %}
+{% load static %}
 
 {% block title %}{% endblock %}
 
@@ -50,7 +51,7 @@
                             </h2>
 
                             <div class="smallplus">
-                                {% include "tags/tags_of_entry.html" %}
+                                {% include "default/tags/tags_of_entry.html" %}
                             </div>
                         </div>
 
@@ -78,7 +79,7 @@
                                         href=http://{{ request.get_host }}{{ entry.get_url }}></fb:comments-count> Yorum</a> | Paylaş:
                                 </span>
 
-                                {% include "share_on_social.html" %}
+                                {% include "default/share_on_social.html" %}
                             </div>
                         </div>
 
@@ -89,7 +90,7 @@
         {% empty %}
             <div class="blog_entry_container">
                 <div class="blog_entry">
-                    <img src="{{ STATIC_URL|default:'/static/' }}template/images/404.png" class="align_right">
+                    <img src="{% get_static_prefix %}default/images/404.png" class="align_right">
 
                     <h2>Hiç Yazı Bulunamadı</h2>
 

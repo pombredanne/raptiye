@@ -17,6 +17,7 @@
 {% endcomment %}
 
 {% load tagging_tags %}
+{% load static %}
 
 {% tag_cloud_for_model blog.Entry as tag_cloud_for_entries with steps=28 min_count=3 distribution=log %}
 
@@ -24,7 +25,7 @@
     <div class="sidebox_container">
         <div class="sidebox_content">
             <div class="sidebox_content_title">
-                <img src="{{ STATIC_URL|default:'/static/' }}template/images/tag_cloud.png">
+                <img src="{% get_static_prefix %}default/images/tag_cloud.png">
                 <strong>etiket bulutu</strong>
             </div>
 

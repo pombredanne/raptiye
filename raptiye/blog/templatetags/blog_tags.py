@@ -47,7 +47,7 @@ def calculate_age():
     return (date.today() - settings.BIRTH_DATE).days / 365
 
 
-@register.inclusion_tag('webcal.html', takes_context=True)
+@register.inclusion_tag('%s/webcal.html' % settings.TEMPLATE_NAME, takes_context=True)
 def webcal(context):
     wc = WebCalendar(get_latest_entries(), locale=settings.LOCALE)
 
@@ -74,7 +74,7 @@ def webcal(context):
     }
 
 
-@register.inclusion_tag('pagination.html', takes_context=True)
+@register.inclusion_tag('%s/pagination.html' % settings.TEMPLATE_NAME, takes_context=True)
 def paginator(context, adjacent_pages=2):
     """
     To be used in conjunction with the object_list generic view.
@@ -117,7 +117,7 @@ def paginator(context, adjacent_pages=2):
     }
 
 
-@register.inclusion_tag('links.html')
+@register.inclusion_tag('%s/links.html' % settings.TEMPLATE_NAME)
 def links():
     return {'links': Link.objects.all()}
 

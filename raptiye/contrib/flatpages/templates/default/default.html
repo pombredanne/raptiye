@@ -1,4 +1,4 @@
-{% extends "index_no_sidebar.html" %}
+{% extends "default/index.html" %}
 
 {% comment %}
     raptiye
@@ -22,45 +22,30 @@
 {% load blog_tags %}
 
 {% block title %}
-    {{ entry.title }} @ gunluk.{% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
+    {{ flatpage.title }} @ gunluk.{% get_from_settings "PROJECT_NAME" %} | {% get_from_settings "PROJECT_SUBTITLE" %}
 {% endblock %}
 
 {% block content %}
-    <div class="grid_16 alpha omega">
+    <div class="grid_11 omega">
         <div class="blog_entry_container vertical_first vertical_last">
             <div class="blog_entry">
                 <div class="blog_entry_title">
-                    <h2 class="no_bottom_margin">
-                        {{ entry.title }}
-                    </h2>
-
-                    <div class="smallplus">
-                        {% include "tags/tags_of_entry.html" %}
-                    </div>
+                    <h2>{{ flatpage.title }}</h2>
                 </div>
 
-                <div class="blog_entry_content blog_text">
-                    {{ entry.content.rendered|emotions|safe }}
+                <div class="blog_entry_content small">
+                    {% with content=flatpage.content.rendered %}
+                        {{ content|emotions|safe }}
+                    {% endwith %}
                 </div>
 
-                <div class="blog_entry_footer_in_detail">
-                    <div class="align_left small">
-                        {{ entry.datetime }}
-                    </div>
-
+                <div class="blog_entry_footer">
                     <div class="align_right small">
-                        {% include "share_on_social.html" %}
+                        {% include "default/share_on_social_for_flatpages.html" %}
                     </div>
-
-                    <div class="clear"></div>
                 </div>
 
-                <div class="blog_entry_comments small">
-                    <a name="comments"></a>
-                    <div class="fb-comments" data-href="http://{{ request.get_host }}{{ entry.get_url }}" data-num-posts="5" data-width="906"></div>
-                </div>
-
-                <div class="clear"></div>
+                <div class="both_sides_cleared"></div>
             </div>
         </div>
     </div>

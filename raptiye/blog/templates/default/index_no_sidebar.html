@@ -20,20 +20,21 @@
 
 {% load blog_tags %}
 {% load flatpage_tags %}
+{% load static %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/reset.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/text.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/960.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/colorbox.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}css/pygments.css" type="text/css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL|default:'/static/' }}template/css/style.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}default/css/reset.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}default/css/text.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}default/css/960.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}default/css/colorbox.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}css/pygments.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% get_static_prefix %}default/css/style.css" type="text/css" media="screen" charset="utf-8">
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/jquery.js" charset="utf-8"></script>
-    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/jquery.colorbox-min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="{{ STATIC_URL|default:'/static/' }}template/js/raptiye.js"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}default/js/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}default/js/jquery.colorbox-min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="{% get_static_prefix %}default/js/raptiye.js"></script>
     {% block js %}{% endblock %}
 {% endblock %}
 
@@ -69,7 +70,7 @@
 
             <div class="grid_8 alpha">
                 <div id="site_logo" class="grid_6 alpha">
-                    <a href="{% url index %}"><img src="{{ STATIC_URL|default:'/static/' }}template/images/site_logo.png"></a>
+                    <a href="{% url index %}"><img src="{% get_static_prefix %}default/images/site_logo.png"></a>
                 </div>
 
                 <div class="suffix_3 omega"></div>
@@ -88,10 +89,6 @@
         </div>
 
         <div id="content" class="grid_16 alpha omega">
-            <div class="grid_5 alpha">
-                {% include "sidebar.html" %}
-            </div>
-
             {% block content %}{% endblock %}
         </div>
 

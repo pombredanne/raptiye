@@ -28,7 +28,7 @@ urlpatterns = patterns('raptiye.blog.views',
     # main page of blog
     url(r'^$', ListView.as_view(**{
         'queryset': get_latest_entries(),
-        'template_name': 'homepage.html',
+        'template_name': '%s/homepage.html' % settings.TEMPLATE_NAME,
         'paginate_by': settings.ENTRIES_PER_PAGE,
         'context_object_name': 'entries'
     }), name='index'),
@@ -44,7 +44,7 @@ urlpatterns = patterns('raptiye.blog.views',
         'context_object_name': "entries",
         'allow_future': False,
         'paginate_by': settings.ENTRIES_PER_PAGE,
-        'template_name': 'entries_for_day.html',
+        'template_name': '%s/entries_for_day.html' % settings.TEMPLATE_NAME,
     }), name='entries_on_date'),
     # an entry on a specific date
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>[\w\d-]+)/$', DateDetailView.as_view(**{
@@ -53,7 +53,7 @@ urlpatterns = patterns('raptiye.blog.views',
         'month_format': '%m',
         'context_object_name': "entry",
         'allow_future': True,
-        'template_name': 'detail.html'
+        'template_name': '%s/detail.html' % settings.TEMPLATE_NAME
     }), name='show_post'),
 
     # feeds

@@ -16,10 +16,12 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 
+{% load static %}
+
 <div class="sidebox_container">
     <div class="sidebox_content">
         <div class="sidebox_content_title">
-            <img src="{{ STATIC_URL|default:'/static/' }}template/images/links.png">
+            <img src="{% get_static_prefix %}default/images/links.png">
             <strong>bağlantılar</strong>
         </div>
 
