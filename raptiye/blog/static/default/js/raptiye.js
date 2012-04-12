@@ -20,4 +20,6 @@ $(function() {
     }).blur(function() {
         $(this).removeClass('extended');
     });
+
+    $('.blog_entry_content a').attr('target', '_blank');
 });
