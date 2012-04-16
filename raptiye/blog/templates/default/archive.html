@@ -100,5 +100,9 @@
                 </div>
             </div>
         {% endfor %}
+
+        <div id="pagination">
+            {% if is_paginated %}{% paginator 5 %}{% endif %}
+        </div>
     </div>
 {% endblock %}
