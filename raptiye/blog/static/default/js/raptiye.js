@@ -14,12 +14,35 @@
  // You should have received a copy of the GNU General Public License
  // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-$(function() {
-    $('#search_container input').focus(function(e) {
-        $(this).addClass('extended');
-    }).blur(function() {
-        $(this).removeClass('extended');
-    });
+// --- EVENT HANDLERS START ---------------------------------------------------
 
+$(document).on('click', '.timeline_row', function(e) {
+    var year = $(this).find('.timeline_row_value a').text();
+
+    if (! year) {
+        return;
+    }
+
+    // first close any expanded year
+    $('.timeline_sub_row:not(.month_' + year + ')').slideUp();
+
+    // expand the clicked year
+    $('.month_' + year).slideToggle();
+
+    e.preventDefault();
+});
+
+$(document).on({
+    focus: function(e) {
+        $(this).addClass('extended');
+    },
+    blur: function(e) {
+        $(this).removeClass('extended');
+    }
+}, '#search_container input');
+
+// --- EVENT HANDLERS END -----------------------------------------------------
+
+$(function() {
     $('.blog_entry_content a').attr('target', '_blank');
 });

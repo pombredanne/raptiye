@@ -1,0 +1,54 @@
+{% extends "default/archive.html" %}
+
+{% comment %}
+    raptiye
+    Copyright (C) 2009  Alper Kanat <alperkanat@raptiye.org>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+{% endcomment %}
+
+{% load blog_tags %}
+
+{% block title %}
+    {{ month|date:"F Y" }} ayında yayınlanmış yazılar @ gunluk.{% get_from_settings "PROJECT_NAME" %} |
+    {% get_from_settings "PROJECT_SUBTITLE" %}
+{% endblock %}
+
+{% block archive_navigation_text %}
+    {{ month|date:"F Y" }} Ayında Yayınlanmış Yazılar
+{% endblock %}
+
+{% block navigation %}
+    {% if previous_month %}
+        <div class="align_left smallplus">
+            {% with previous_month as pm %}
+                &laquo; <a href="{% url blog:entries_in_month pm.year, pm.month %}">Önceki Ay</a>
+            {% endwith %}
+        </div>
+    {% endif %}
+
+    {% if next_month %}
+        <div class="align_right smallplus">
+            {% with next_month as nm %}
+                <a href="{% url blog:entries_in_month nm.year, nm.month %}">Sonraki Ay</a> &raquo;
+            {% endwith %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block not_found_text %}
+    <strong><em>{{ month|date:"F Y" }}</em></strong> ayında hiç yazı yazılmamış. Dilerseniz önceki ve
+    sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana
+    sayfaya yönlenebilirsiniz.
+{% endblock %}

@@ -18,7 +18,7 @@
 
 from django.conf import settings
 from django.conf.urls import patterns, url
-from django.views.generic.dates import DayArchiveView, DateDetailView
+from django.views.generic.dates import DayArchiveView, DateDetailView, MonthArchiveView
 from django.views.generic.list import ListView
 
 from feeds import *
@@ -35,14 +35,23 @@ urlpatterns = patterns('raptiye.blog.views',
 
     # archives for blogs..
     # url(r'^(?P<year>\d{4})/$', 'get_entries_for_year', name='entries_in_year'),
-    # url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', 'get_entries_for_month', name='entries_on_month'),
+    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', MonthArchiveView.as_view(**{
+        'queryset': get_latest_entries(),
+        'date_field': 'datetime',
+        'month_format': '%m',
+        'allow_empty': True,
+        'context_object_name': "entries",
+        'allow_future': True,
+        'paginate_by': settings.ENTRIES_PER_PAGE,
+        'template_name': '%s/entries_in_month.html' % settings.TEMPLATE_NAME,
+    }), name='entries_in_month'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', DayArchiveView.as_view(**{
         'queryset': get_latest_entries(),
         'date_field': 'datetime',
         'month_format': '%m',
         'allow_empty': True,
         'context_object_name': "entries",
-        'allow_future': False,
+        'allow_future': True,
         'paginate_by': settings.ENTRIES_PER_PAGE,
         'template_name': '%s/entries_for_day.html' % settings.TEMPLATE_NAME,
     }), name='entries_on_date'),

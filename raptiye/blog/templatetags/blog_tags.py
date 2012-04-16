@@ -17,6 +17,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 
+from calendar import month_name
 from datetime import date
 import logging
 
@@ -25,7 +26,7 @@ from django.conf import settings
 from django.utils.safestring import mark_safe
 
 from raptiye.blog.functions import get_latest_entries
-from raptiye.blog.models import Link
+from raptiye.blog.models import Entry, Link
 from raptiye.blog.webcal import WebCalendar
 
 
@@ -40,6 +41,25 @@ __all__ = (
 
 log = logging.getLogger(__name__)
 register = template.Library()
+
+
+@register.inclusion_tag('%s/timeline.html' % settings.TEMPLATE_NAME, takes_context=True)
+def timeline(context):
+    years = []
+    months = [(i, month_name[i]) for i in range(1, 13)]
+    currentMonth = context.get('month')
+
+    if Entry.objects.exists():
+        min_year = Entry.objects.order_by('datetime')[0].datetime.year
+        current_year = date.today().year
+        years = range(min_year, current_year + 1)
+        years.reverse()
+
+    return {
+        'years': years,
+        'months': months,
+        'currentMonth': currentMonth
+    }
 
 
 @register.simple_tag
