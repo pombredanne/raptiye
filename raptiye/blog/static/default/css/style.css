@@ -672,7 +672,7 @@ button[type=submit] {
 /* PADDING RIGHT END */
 
 /* FACEBOOK RELATED HACKS START */
-.fb_edge_widget_with_comment iframe {
+.fb_edge_widget_with_comment, .fb_edge_widget_with_comment iframe {
     width: 48px !important;
 }
 
