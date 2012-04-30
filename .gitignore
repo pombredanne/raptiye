@@ -11,4 +11,3 @@ wsgi_*.py
 .DS_Store
 *.log
 *.log.*
-*/templates/cakmaavukat/
