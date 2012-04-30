@@ -315,16 +315,24 @@ button[type=submit] {
 }
 
 .timeline_row {
-    border-left: 5px solid #f6d41b;
     margin-bottom: 1px;
+    background-color: #4A4A49;
+    border-left: 5px solid #f6d41b;
 }
 
 .timeline_row:hover {
+    background-color: #4f4f4e;
     border-left: 5px solid #b09606;
 }
 
 .timeline_sub_row {
+    background-color: #4A4A49;
     border-left: 5px solid #756404;
+}
+
+.timeline_sub_row:hover {
+    background-color: #4f4f4e;
+    border-left: 5px solid #b09606;
 }
 
 .align_left {
@@ -450,27 +458,27 @@ button[type=submit] {
 /* MARGIN TOP START */
 
 .marginTop5 {
-    margin-top: 5px;
+    margin-top: 5px !important;
 }
 
 .marginTop10 {
-    margin-top: 10px;
+    margin-top: 10px !important;
 }
 
 .marginTop15 {
-    margin-top: 15px;
+    margin-top: 15px !important;
 }
 
 .marginTop20 {
-    margin-top: 20px;
+    margin-top: 20px !important;
 }
 
 .marginTop25 {
-    margin-top: 25px;
+    margin-top: 25px !important;
 }
 
 .marginTop30 {
-    margin-top: 30px;
+    margin-top: 30px !important;
 }
 
 /* MARGIN TOP END */
@@ -478,27 +486,27 @@ button[type=submit] {
 /* MARGIN BOTTOM START */
 
 .marginBottom5 {
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
 }
 
 .marginBottom10 {
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 
 .marginBottom15 {
-    margin-bottom: 15px;
+    margin-bottom: 15px !important;
 }
 
 .marginBottom20 {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
 .marginBottom25 {
-    margin-bottom: 25px;
+    margin-bottom: 25px !important;
 }
 
 .marginBottom30 {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 
 /* MARGIN BOTTOM END */
@@ -506,27 +514,27 @@ button[type=submit] {
 /* MARGIN LEFT START */
 
 .marginLeft5 {
-    margin-left: 5px;
+    margin-left: 5px !important;
 }
 
 .marginLeft10 {
-    margin-left: 10px;
+    margin-left: 10px !important;
 }
 
 .marginLeft15 {
-    margin-left: 15px;
+    margin-left: 15px !important;
 }
 
 .marginLeft20 {
-    margin-left: 20px;
+    margin-left: 20px !important;
 }
 
 .marginLeft25 {
-    margin-left: 25px;
+    margin-left: 25px !important;
 }
 
 .marginLeft30 {
-    margin-left: 30px;
+    margin-left: 30px !important;
 }
 
 /* MARGIN LEFT END */
@@ -534,27 +542,27 @@ button[type=submit] {
 /* MARGIN RIGHT START */
 
 .marginRight5 {
-    margin-right: 5px;
+    margin-right: 5px !important;
 }
 
 .marginRight10 {
-    margin-right: 10px;
+    margin-right: 10px !important;
 }
 
 .marginRight15 {
-    margin-right: 15px;
+    margin-right: 15px !important;
 }
 
 .marginRight20 {
-    margin-right: 20px;
+    margin-right: 20px !important;
 }
 
 .marginRight25 {
-    margin-right: 25px;
+    margin-right: 25px !important;
 }
 
 .marginRight30 {
-    margin-right: 30px;
+    margin-right: 30px !important;
 }
 
 /* MARGIN RIGHT END */
@@ -562,27 +570,27 @@ button[type=submit] {
 /* PADDING TOP START */
 
 .paddingTop5 {
-    padding-top: 5px;
+    padding-top: 5px !important;
 }
 
 .paddingTop10 {
-    padding-top: 10px;
+    padding-top: 10px !important;
 }
 
 .paddingTop15 {
-    padding-top: 15px;
+    padding-top: 15px !important;
 }
 
 .paddingTop20 {
-    padding-top: 20px;
+    padding-top: 20px !important;
 }
 
 .paddingTop25 {
-    padding-top: 25px;
+    padding-top: 25px !important;
 }
 
 .paddingTop30 {
-    padding-top: 30px;
+    padding-top: 30px !important;
 }
 
 /* PADDING TOP END */
@@ -590,27 +598,27 @@ button[type=submit] {
 /* PADDING BOTTOM START */
 
 .paddingBottom5 {
-    padding-bottom: 5px;
+    padding-bottom: 5px !important;
 }
 
 .paddingBottom10 {
-    padding-bottom: 10px;
+    padding-bottom: 10px !important;
 }
 
 .paddingBottom15 {
-    padding-bottom: 15px;
+    padding-bottom: 15px !important;
 }
 
 .paddingBottom20 {
-    padding-bottom: 20px;
+    padding-bottom: 20px !important;
 }
 
 .paddingBottom25 {
-    padding-bottom: 25px;
+    padding-bottom: 25px !important;
 }
 
 .paddingBottom30 {
-    padding-bottom: 30px;
+    padding-bottom: 30px !important;
 }
 
 /* PADDING BOTTOM END */
@@ -618,27 +626,27 @@ button[type=submit] {
 /* PADDING LEFT START */
 
 .paddingLeft5 {
-    padding-left: 5px;
+    padding-left: 5px !important;
 }
 
 .paddingLeft10 {
-    padding-left: 10px;
+    padding-left: 10px !important;
 }
 
 .paddingLeft15 {
-    padding-left: 15px;
+    padding-left: 15px !important;
 }
 
 .paddingLeft20 {
-    padding-left: 20px;
+    padding-left: 20px !important;
 }
 
 .paddingLeft25 {
-    padding-left: 25px;
+    padding-left: 25px !important;
 }
 
 .paddingLeft30 {
-    padding-left: 30px;
+    padding-left: 30px !important;
 }
 
 /* PADDING LEFT END */
@@ -646,27 +654,27 @@ button[type=submit] {
 /* PADDING RIGHT START */
 
 .paddingRight5 {
-    padding-right: 5px;
+    padding-right: 5px !important;
 }
 
 .paddingRight10 {
-    padding-right: 10px;
+    padding-right: 10px !important;
 }
 
 .paddingRight15 {
-    padding-right: 15px;
+    padding-right: 15px !important;
 }
 
 .paddingRight20 {
-    padding-right: 20px;
+    padding-right: 20px !important;
 }
 
 .paddingRight25 {
-    padding-right: 25px;
+    padding-right: 25px !important;
 }
 
 .paddingRight30 {
-    padding-right: 30px;
+    padding-right: 30px !important;
 }
 
 /* PADDING RIGHT END */
