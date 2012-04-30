@@ -6,7 +6,7 @@
 */media/images/upload/
 *.tmproj
 local_settings*.py
-wsgi_*.py
+wsgi.py
 ._*
 .DS_Store
 *.log
