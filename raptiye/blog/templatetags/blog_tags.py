@@ -31,6 +31,7 @@ from raptiye.blog.webcal import WebCalendar
 
 
 __all__ = (
+    'timeline',
     'calculate_age',
     'webcal',
     'paginator',
