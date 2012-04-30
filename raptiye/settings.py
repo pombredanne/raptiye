@@ -178,7 +178,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 TEMPLATE_DIRS = (
-    "%s/templates/default" % DOCUMENT_ROOT,
+    "%s/templates/%s" % (DOCUMENT_ROOT, TEMPLATE_NAME),
 )
 
 INSTALLED_APPS = (
