@@ -36,7 +36,7 @@
 
         {% block styles %}{% endblock %}
 
-        <link href="{% url blog:rss_entries_latest %}" rel="alternate" type="application/rss+xml" title="raptiye rss kaynağı">
+        <link href="{% url 'blog:rss_entries_latest' %}" rel="alternate" type="application/rss+xml" title="raptiye rss kaynağı">
 
         {% block additional_rss %}
             {# extend this block to include rss urls #}

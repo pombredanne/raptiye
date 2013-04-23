@@ -12,7 +12,7 @@
             {% for i, month in months %}
                 <div class="timeline_sub_row paddingLeft20 month_{{ year }}{% ifnotequal year currentMonth.year %} hidden{% endifnotequal %}">
                     <div class="timeline_row_value" data-year="{{ year }}">
-                        <a class="white" href="{% url blog:entries_in_month year i %}" title="{% trans month %} {{ year }} arşivlerinde dolaşmak için tıklayın.">{% trans month %}</a>
+                        <a class="white" href="{% url 'blog:entries_in_month' year i %}" title="{% trans month %} {{ year }} arşivlerinde dolaşmak için tıklayın.">{% trans month %}</a>
                     </div>
                 </div>
             {% endfor %}

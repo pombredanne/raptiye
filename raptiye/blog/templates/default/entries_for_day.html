@@ -33,7 +33,7 @@
     {% if previous_day %}
         <div class="align_left smallplus">
             {% with previous_day as pd %}
-                &laquo; <a href="{% url blog:entries_on_date pd.year, pd.month, pd.day %}">Önceki Gün</a>
+                &laquo; <a href="{% url 'blog:entries_on_date' pd.year, pd.month, pd.day %}">Önceki Gün</a>
             {% endwith %}
         </div>
     {% endif %}
@@ -41,7 +41,7 @@
     {% if next_day %}
         <div class="align_right smallplus">
             {% with next_day as nd %}
-                <a href="{% url blog:entries_on_date nd.year, nd.month, nd.day %}">Sonraki Gün</a> &raquo;
+                <a href="{% url 'blog:entries_on_date' nd.year, nd.month, nd.day %}">Sonraki Gün</a> &raquo;
             {% endwith %}
         </div>
     {% endif %}
@@ -49,6 +49,6 @@
 
 {% block not_found_text %}
     <strong><em>{{ day|date:"d.m.Y, l" }}</em></strong> tarihinde hiç yazı yazılmamış. Dilerseniz önceki ve
-    sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana
+    sonraki günlere ilerleyebilir ya da <a href="{% url 'index' %}" class="ulink">buraya</a> tıklayarak ana
     sayfaya yönlenebilirsiniz.
 {% endblock %}
