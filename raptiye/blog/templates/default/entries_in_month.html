@@ -33,7 +33,7 @@
     {% if previous_month %}
         <div class="align_left smallplus">
             {% with previous_month as pm %}
-                &laquo; <a href="{% url 'blog:entries_in_month' pm.year, pm.month %}">Önceki Ay</a>
+                &laquo; <a href="{% url blog:entries_in_month pm.year, pm.month %}">Önceki Ay</a>
             {% endwith %}
         </div>
     {% endif %}
@@ -41,7 +41,7 @@
     {% if next_month %}
         <div class="align_right smallplus">
             {% with next_month as nm %}
-                <a href="{% url 'blog:entries_in_month' nm.year, nm.month %}">Sonraki Ay</a> &raquo;
+                <a href="{% url blog:entries_in_month nm.year, nm.month %}">Sonraki Ay</a> &raquo;
             {% endwith %}
         </div>
     {% endif %}
@@ -49,6 +49,6 @@
 
 {% block not_found_text %}
     <strong><em>{{ month|date:"F Y" }}</em></strong> ayında hiç yazı yazılmamış. Dilerseniz önceki ve
-    sonraki günlere ilerleyebilir ya da <a href="{% url 'index' %}" class="ulink">buraya</a> tıklayarak ana
+    sonraki günlere ilerleyebilir ya da <a href="{% url index %}" class="ulink">buraya</a> tıklayarak ana
     sayfaya yönlenebilirsiniz.
 {% endblock %}

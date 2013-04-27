@@ -23,7 +23,7 @@
 {% load static %}
 
 {% block additional_rss %}
-    <link href="{% url 'blog:rss_entries_tagged_with' tag %}" rel="alternate" type="application/rss+xml" title="{{ tag }} ile etiketlenmiş yazılar">
+    <link href="{% url blog:rss_entries_tagged_with tag %}" rel="alternate" type="application/rss+xml" title="{{ tag }} ile etiketlenmiş yazılar">
 {% endblock %}
 
 {% block title %}
@@ -39,7 +39,7 @@
                 </h2>
 
                 <div class="tag_feed_rss_icon align_right">
-                    <a href="{% url 'blog:rss_entries_tagged_with' tag %}" title="{{ tag }} ile etiketlenmiş yazıları RSS ile takip etmek için tıklayın!">
+                    <a href="{% url blog:rss_entries_tagged_with tag %}" title="{{ tag }} ile etiketlenmiş yazıları RSS ile takip etmek için tıklayın!">
                         <img src="{% get_static_prefix %}default/images/social/rss_sidebar.png">
                     </a>
                 </div>
